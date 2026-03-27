@@ -31,9 +31,13 @@ Visit our live website: **[https://c2crobotics.github.io](https://c2crobotics.gi
    
    # Using yarn
    yarn install
+   OR
+   npm install -g yarn
    
    # Using pnpm
    pnpm install
+   OR
+   npm install -g pnpm
    ```
 
 3. **Start the development server**:
