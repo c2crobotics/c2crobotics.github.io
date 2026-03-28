@@ -20,6 +20,9 @@ Visit our live website: **[https://c2crobotics.github.io](https://c2crobotics.gi
    ```bash
    git clone https://github.com/c2crobotics/c2crobotics.github.io.git
    ```
+1a. **Navigate to code source folder**
+   Using command line, navigate to the source folder for the code.
+   Alternatively, open a command prompt within the code folder.
 
 2. **Install dependencies**:
    ```bash
@@ -28,9 +31,13 @@ Visit our live website: **[https://c2crobotics.github.io](https://c2crobotics.gi
    
    # Using yarn
    yarn install
+   OR
+   npm install -g yarn
    
    # Using pnpm
    pnpm install
+   OR
+   npm install -g pnpm
    ```
 
 3. **Start the development server**:
