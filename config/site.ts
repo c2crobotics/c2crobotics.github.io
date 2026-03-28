@@ -203,20 +203,25 @@ const galleryData: GalleryData = {
 }
 
 const sponsorsData: Sponsor[] = [
+  // {
+  //   title: "Vex Robotics Competition",
+  //   link: "/sponsors/VEX.webp",
+  //   url: "https://www.vexrobotics.com/competition",
+  // },
+  // {
+  //   title: "Vex IQ Robotics Competition",
+  //   link: "/sponsors/VexIQ.webp",
+  //   url: "https://www.vexrobotics.com/iq",
+  // },
   {
-    title: "Vex Robotics Competition",
-    link: "/sponsors/VEX.webp",
-    url: "https://www.vexrobotics.com/competition",
-  },
-  {
-    title: "Vex IQ Robotics Competition",
-    link: "/sponsors/VexIQ.webp",
-    url: "https://www.vexrobotics.com/iq",
-  },
-  {
-    title: "Whimsy Tech",
+    title: "Whimsy Tech Inc.",
     link: "/sponsors/WhimsyTech.webp",
     url: "https://www.whimsytech.net/",
+  },
+  {
+    title: "Wisteria Arts",
+    link: "/sponsors/WisteriaArts.webp",
+    url: "https://www.wisteriaarts.com/",
   },
 ]
 
