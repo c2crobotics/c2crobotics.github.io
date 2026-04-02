@@ -88,7 +88,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <Link 
                   key={item.href}
                   href={item.href} 
-                  className="uppercase font-semibold tracking-wide text-gray-300 hover:text-[#ffb347] transition text-sm sm:text-base"
+                  className="uppercase font-semibold tracking-wide text-gray-300 hover:text-[#50a1ff] transition text-sm sm:text-base"
                   onClick={(e) => handleFooterNavClick(e, item.href)}
                 >
                   {item.label}
@@ -101,7 +101,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <nav className="flex flex-wrap justify-center items-center gap-1 sm:gap-2 text-center text-gray-400 text-sm sm:text-base mt-3 sm:mt-2 px-2">
               <Link 
                 href={siteConfig.siteURLs.tos} 
-                className="tracking-wide hover:text-[#ffb347] transition whitespace-nowrap"
+                className="tracking-wide hover:text-[#50a1ff] transition whitespace-nowrap"
                 onClick={(e) => handleFooterNavClick(e, siteConfig.siteURLs.tos)}
               >
                 Terms of Service
@@ -109,7 +109,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <span className="text-gray-500">|</span>
               <Link 
                 href={siteConfig.siteURLs.pp} 
-                className="tracking-wide hover:text-[#ffb347] transition whitespace-nowrap"
+                className="tracking-wide hover:text-[#50a1ff] transition whitespace-nowrap"
                 onClick={(e) => handleFooterNavClick(e, siteConfig.siteURLs.pp)}
               >
                 Privacy Policy
