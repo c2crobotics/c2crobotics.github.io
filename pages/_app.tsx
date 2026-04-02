@@ -96,7 +96,7 @@ export default function App({ Component, pageProps }: AppProps) {
               ))}
             </nav>
             <div className="text-center text-gray-400 text-sm sm:text-base mt-6 sm:mt-8 px-2">
-              © 2025 Coast 2 Coast Robotics. All rights reserved.
+              © 2026 Coast 2 Coast Robotics. All rights reserved.
             </div>
             <nav className="flex flex-wrap justify-center items-center gap-1 sm:gap-2 text-center text-gray-400 text-sm sm:text-base mt-3 sm:mt-2 px-2">
               <Link 
