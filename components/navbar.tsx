@@ -120,7 +120,7 @@ export default function Navbar() {
                 <img
                   src="/logo.png"
                   alt={siteConfig.name}
-                  className="h-12 w-auto transition-transform duration-200 group-hover:rotate-12"
+                  className="h-12 w-auto transition-transform duration-200"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-orange-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
