@@ -15,7 +15,7 @@ const courses = {
       {
         title: "RM001 - Robotics for Grades K-5",
         description:
-          "Build your first robot while learning core engineering principles, 3d design, basic programming, using the VEX IQ system.",
+          "In this course, students will dive into core engineering principles, 3D design modeling using CAD, programming, and using the VEX IQ system. Students will also have the chance to build their first bot using the knowledge they've gained throughout the course, making this a major stepping stone in their robotics career.",
         duration: "8 weeks",
         level: "Beginner",
         features: [
@@ -27,14 +27,14 @@ const courses = {
       },
       {
         title: "CTC001 - Programming for Grades K-5",
-        description: "Learn programming fundamentals, data types, and C++ basics.",
+        description: "In this course, students will learn important programming fundamentals, numerous vital data types, and the essentials of C++ coding. This course provides detailed necessities of being a coder for your team.",
         duration: "Jan 6 - Apr 13, 2025",
         level: "Beginner",
         features: ["Programming skills", "Data types", "Problem-solving", "C++ basics"],
       },
       {
         title: "3D Modelling and Design",
-        description: "Learn 3D modeling, additive/negative manufacturing, and design principles.",
+        description: "In this course, students will be given the opportunity to learn 3D modeling using CAD software such as Onshape, additive/negative manufacting, and numerous key design principles that can be used in robots and hundreds of other engineering fields. This course will equip the student with the proper knowledge and resources to become a professional designer.",
         duration: "Jan 6 - Apr 13, 2025",
         level: "Beginner",
         features: ["CAD design", "Design principles", "3d printing", "Problem-solving"],
