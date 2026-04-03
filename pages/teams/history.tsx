@@ -73,7 +73,7 @@ const mobileSidebarVariants = {
 } as const
 
 export default function History() {
-  const [selectedYear, setSelectedYear] = useState(2024)
+  const [selectedYear, setSelectedYear] = useState(2026)
   const [selectedTeam, setSelectedTeam] = useState<number | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [teamsData, setTeamsData] = useState<WebsiteData>({})
@@ -457,6 +457,10 @@ export default function History() {
                                   <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 text-sm text-gray-600 space-y-1 sm:space-y-0">
                                     <div className="flex items-center font-medium">
                                       <Calendar className="w-4 h-4 mr-2 text-blue-500 flex-shrink-0" />
+                                      <span className="break-words">{achievement.name}</span>
+                                    </div>
+                                    <div className="flex items-center font-medium">
+                                      <Calendar className="w-4 h-4 mr-2 text-blue-500 flex-shrink-0" />
                                       <span className="break-words">{achievement.date}</span>
                                     </div>
                                     <div className="flex items-center font-medium">
@@ -480,7 +484,7 @@ export default function History() {
                     <CardHeader>
                       <CardTitle className="text-xl sm:text-2xl font-bold text-[#1a1a1f] flex items-center uppercase tracking-wide">
                         <Calendar className="w-5 h-5 sm:w-6 sm:h-6 mr-3 text-blue-500 flex-shrink-0" />
-                        <span className="break-words">Competitions Participated</span>
+                        <span className="break-words">Competitions</span>
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
