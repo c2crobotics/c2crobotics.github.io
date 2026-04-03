@@ -73,6 +73,12 @@ export const navItemsData = [
         tabId: "",
         description: "Learn about our journey and achievements",
       },
+      {
+        label: "Team Roster",
+        href: "/teams/roster",
+        tabId: "",
+        description: "Learn about the members on each team"
+      }
     ],
   },
   {
@@ -173,8 +179,8 @@ const statsData: StatItem[] = [
   },
   {
     icon: Users,
-    label: "VRC/VIQRC Teams",
-    value: 6,
+    label: "V5RC/VIQRC/VURC Teams",
+    value: 10,
     suffix: "",
     color: "text-green-500",
     bgColor: "bg-green-50",
