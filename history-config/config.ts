@@ -8,7 +8,7 @@ export const ROBOTEVENTS_CONFIG = {
   TEAMS: ["62880A", "62880B", "62880C", "62880D", "62880E", "65950A", "65950B", "65950C", "65950D", "OOPS"],
 
   // Organization name to filter by
-  ORGANIZATION: ["Coast 2 Coast Robotics", "Coast 2 Coast Robotics Community Edition"],
+  ORGANIZATION: "Coast 2 Coast Robotics",
 
   // API Base URL
   BASE_URL: "https://www.robotevents.com/api/v2",
