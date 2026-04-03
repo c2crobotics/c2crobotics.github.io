@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-04-03T20:23:15.543Z",
+  "teams": [
+    {
+      "name": "62880A",
+      "totalImages": 3,
+      "years": [
+        "2026"
+      ],
+      "manifestUrl": "team-62880A.json"
+    },
+    {
+      "name": "62880B",
+      "totalImages": 3,
+      "years": [
+        "2026"
+      ],
+      "manifestUrl": "team-62880B.json"
+    }
+  ]
+}
