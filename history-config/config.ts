@@ -5,10 +5,10 @@ export const ROBOTEVENTS_CONFIG = {
   API_TOKEN: process.env.ROBOTEVENTS_API_TOKEN || "",
 
   // Your team numbers
-  TEAMS: ["62880A", "62880B", "62880C", "62880D", "65950A", "65950B"],
+  TEAMS: ["62880A", "62880B", "62880C", "62880D", "62880E", "65950A", "65950B", "65950C", "65950D", "OOPS"],
 
   // Organization name to filter by
-  ORGANIZATION: "Coast 2 Coast Robotics",
+  ORGANIZATION: ["Coast 2 Coast Robotics", "Coast 2 Coast Robotics Community Edition"],
 
   // API Base URL
   BASE_URL: "https://www.robotevents.com/api/v2",
