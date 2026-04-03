@@ -74,6 +74,12 @@ export const navItemsData = [
         tabId: "",
         description: "Learn about our journey and achievements",
       },
+      {
+        label: "Team Roster",
+        href: "/teams/roster",
+        tabId: "",
+        description: "Learn about the members on each team"
+      }
     ],
   },
   {
