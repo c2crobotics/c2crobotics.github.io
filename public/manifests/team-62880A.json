@@ -1,0 +1,27 @@
+{
+  "team": "62880A",
+  "generatedAt": "2026-04-03T20:23:15.489Z",
+  "totalImages": 3,
+  "years": [
+    {
+      "year": "2026",
+      "images": [
+        {
+          "url": "https://storage-images123.s3.us-east-1.amazonaws.com/history/2026/62880A/NJIT2024_September21_JHO%20%5BIMG_4967%5D.webp",
+          "key": "history/2026/62880A/NJIT2024_September21_JHO [IMG_4967].webp",
+          "caption": ""
+        },
+        {
+          "url": "https://storage-images123.s3.us-east-1.amazonaws.com/history/2026/62880A/NJIT2024_September21_JHO%20%5BIMG_4972%5D.webp",
+          "key": "history/2026/62880A/NJIT2024_September21_JHO [IMG_4972].webp",
+          "caption": ""
+        },
+        {
+          "url": "https://storage-images123.s3.us-east-1.amazonaws.com/history/2026/62880A/NJIT2024_September21_JHO%20%5BIMG_5042%5D.webp",
+          "key": "history/2026/62880A/NJIT2024_September21_JHO [IMG_5042].webp",
+          "caption": ""
+        }
+      ]
+    }
+  ]
+}

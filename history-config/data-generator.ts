@@ -1,6 +1,5 @@
 import { RobotEventsAnalyzer } from "@/history-config/robotevents-analyzer"
 import { ROBOTEVENTS_CONFIG } from "@/history-config/config"
-import { getPhotos } from "@/history-config/photo-config"
 
 interface WebsiteTeamData {
   id: number
@@ -17,10 +16,6 @@ interface WebsiteTeamData {
     date: string
     location: string
   }>
-  photos: Array<{
-    url: string
-    caption: string
-  }>
 }
 
 export interface WebsiteData {
@@ -32,11 +27,6 @@ export class DataGenerator {
 
   constructor() {
     this.analyzer = new RobotEventsAnalyzer()
-  }
-
-  private getTeamPhotos(teamName: string, year: number): Array<{ url: string; caption: string }> {
-    // Only return custom photos if they exist, otherwise return empty array
-    return getPhotos(teamName, year)
   }
 
   private extractYearFromSeason(seasonName: string): number {
@@ -106,19 +96,18 @@ export class DataGenerator {
         let existingTeam = teamsData[year].find((t) => t.name === stats.teamName)
 
         if (!existingTeam) {
-          // Create new team entry
+          // Create new team entry (no photos anymore)
           existingTeam = {
             id: teamIdCounter++,
             name: stats.teamName,
             number: stats.teamNumber,
             achievements: [],
             competitions: [],
-            photos: this.getTeamPhotos(stats.teamName, year),
           }
           teamsData[year].push(existingTeam)
         }
 
-        // Add achievements 
+        // Add achievements
         const achievements = season.awards.map((award) => ({
           name: award.name,
           place: "Award",
