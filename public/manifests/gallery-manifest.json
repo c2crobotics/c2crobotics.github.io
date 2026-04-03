@@ -1,0 +1,27 @@
+{
+  "carouselImages": [
+    "https://storage-images123.s3.us-east-1.amazonaws.com/gallery/carousel/placeholder.webp"
+  ],
+  "albums": {
+    "rapid-relay-2025": {
+      "name": "Rapid Relay 2025",
+      "subcategories": {
+        "competitions": {
+          "name": "Competition Photos",
+          "images": [
+            "https://storage-images123.s3.us-east-1.amazonaws.com/gallery/albums/rapid-relay-2025/competitions/Worlds2025_May12_JHO [IMG_2304].webp",
+            "https://storage-images123.s3.us-east-1.amazonaws.com/gallery/albums/rapid-relay-2025/competitions/Worlds2025_May12_JHO [IMG_2312].webp",
+            "https://storage-images123.s3.us-east-1.amazonaws.com/gallery/albums/rapid-relay-2025/competitions/Worlds2025_May12_JHO [IMG_2317].webp",
+            "https://storage-images123.s3.us-east-1.amazonaws.com/gallery/albums/rapid-relay-2025/competitions/Worlds2025_May12_JHO [IMG_2320].webp"
+          ]
+        },
+        "robots": {
+          "name": "Robots",
+          "images": [
+            "https://storage-images123.s3.us-east-1.amazonaws.com/gallery/albums/rapid-relay-2025/robots/Worlds2025_May12_JHO [IMG_2327].webp"
+          ]
+        }
+      }
+    }
+  }
+}

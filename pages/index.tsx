@@ -67,7 +67,7 @@ export default function Home() {
               className="z-50 flex flex-col justify-center items-center px-4 h-full"
             >
               <motion.p
-                className="font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-center text-white py-4 main bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent"
+                className="font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-center text-white py-4 main bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}

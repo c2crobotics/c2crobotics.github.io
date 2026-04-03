@@ -79,8 +79,12 @@ export default function History() {
   const [teamsData, setTeamsData] = useState<WebsiteData>({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [loadingProgress, setLoadingProgress] = useState("")
 
+  // State for photos from S3 manifest
+  const [teamPhotos, setTeamPhotos] = useState<Array<{ url: string; caption: string }>>([])
+  const [photosLoading, setPhotosLoading] = useState(false)
+
+  // Fetch teams data (achievements & competitions) from RobotEvents
   useEffect(() => {
     async function fetchTeamsData() {
       try {
@@ -95,7 +99,6 @@ export default function History() {
         if (years.length > 0) {
           setSelectedYear(years[0])
         }
-        setTimeout(() => setLoadingProgress(""), 2000)
       } catch (err) {
         console.error("Error fetching teams data:", err)
         setError(err instanceof Error ? err.message : "Failed to load team data")
@@ -107,12 +110,64 @@ export default function History() {
     fetchTeamsData()
   }, [])
 
+  // Fetch photos from manifest for selected team or year changes
+  useEffect(() => {
+    async function fetchTeamPhotos() {
+      if (!selectedTeam) {
+        setTeamPhotos([])
+        return
+      }
+
+      // Find the current team object to get its number (e.g., "62880A")
+      const currentTeams = teamsData[selectedYear] || []
+      const teamObj = currentTeams.find(t => t.id === selectedTeam)
+      if (!teamObj) {
+        setTeamPhotos([])
+        return
+      }
+
+      const teamNumber = teamObj.number // e.g., "62880A"
+      const manifestUrl = `/manifests/team-${teamNumber}.json`
+
+      setPhotosLoading(true)
+      try {
+        const res = await fetch(manifestUrl)
+        if (!res.ok) {
+          // No manifest for this team – show no photos
+          setTeamPhotos([])
+          return
+        }
+        const manifest = await res.json()
+        // manifest.years is array like [{ year: "2024", images: [...] }, ...]
+        const yearData = manifest.years?.find((y: any) => y.year === String(selectedYear))
+        if (yearData && yearData.images) {
+          setTeamPhotos(yearData.images)
+        } else {
+          setTeamPhotos([])
+        }
+      } catch (err) {
+        console.error(`Failed to load manifest for team ${teamNumber}:`, err)
+        setTeamPhotos([])
+      } finally {
+        setPhotosLoading(false)
+      }
+    }
+
+    fetchTeamPhotos()
+  }, [selectedTeam, selectedYear, teamsData])
+
   const years = Object.keys(teamsData)
     .map(Number)
     .sort((a, b) => b - a)
   const currentTeams = teamsData[selectedYear] || []
   const displayTeam = selectedTeam ? currentTeams.find((t) => t.id === selectedTeam) : currentTeams[0]
   const contentKey = `${selectedYear}-${selectedTeam || displayTeam?.id || "none"}`
+
+  useEffect(() => {
+    if (!loading && years.length > 0 && currentTeams.length > 0 && selectedTeam === null) {
+      setSelectedTeam(currentTeams[0].id)
+    }
+  }, [loading, years, currentTeams, selectedTeam])
 
   const handleYearSelect = (year: number) => {
     setSelectedYear(year)
@@ -140,7 +195,7 @@ export default function History() {
     setSidebarOpen(false)
   }
 
-  // Loading state with progress
+  // Loading state
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center px-4">
@@ -148,11 +203,6 @@ export default function History() {
           <CardContent className="text-center">
             <Loader2 className="w-12 h-12 mx-auto text-blue-500 animate-spin mb-4" />
             <h3 className="text-xl font-bold text-[#1a1a1f] mb-2 uppercase tracking-wide">Loading Team Data</h3>
-            {loadingProgress && (
-              <div className="bg-gray-100 rounded-lg p-3 text-sm text-gray-700 font-mono break-words">
-                {loadingProgress}
-              </div>
-            )}
             <p className="text-gray-500 text-sm mt-4">Fetching data from RobotEvents API</p>
           </CardContent>
         </Card>
@@ -261,11 +311,10 @@ export default function History() {
                       key={team.id}
                       variants={itemVariants}
                       onClick={() => handleTeamSelect(team.id)}
-                      className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-300 ease-out font-bold uppercase tracking-wide hover:scale-[1.02] ${
-                        selectedTeam === team.id || (!selectedTeam && team === currentTeams[0])
-                          ? "bg-blue-600 text-white shadow-lg"
-                          : "text-gray-600 hover:bg-gray-50 hover:shadow-md"
-                      }`}
+                      className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-300 ease-out font-bold uppercase tracking-wide hover:scale-[1.02] ${selectedTeam === team.id || (!selectedTeam && team === currentTeams[0])
+                        ? "bg-blue-600 text-white shadow-lg"
+                        : "text-gray-600 hover:bg-gray-50 hover:shadow-md"
+                        }`}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -284,11 +333,10 @@ export default function History() {
                     key={year}
                     variants={itemVariants}
                     onClick={() => handleYearSelect(year)}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ease-out font-bold uppercase tracking-wide hover:scale-[1.02] ${
-                      selectedYear === year
-                        ? "bg-[#1a1a1f] text-white shadow-lg"
-                        : "text-gray-700 hover:bg-gray-100 hover:shadow-md"
-                    }`}
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ease-out font-bold uppercase tracking-wide hover:scale-[1.02] ${selectedYear === year
+                      ? "bg-[#1a1a1f] text-white shadow-lg"
+                      : "text-gray-700 hover:bg-gray-100 hover:shadow-md"
+                      }`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -345,11 +393,10 @@ export default function History() {
                           <button
                             key={team.id}
                             onClick={() => handleTeamSelect(team.id)}
-                            className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-300 ease-out font-bold uppercase tracking-wide ${
-                              selectedTeam === team.id || (!selectedTeam && team === currentTeams[0])
-                                ? "bg-blue-600 text-white shadow-lg"
-                                : "text-gray-600 hover:bg-gray-50 hover:shadow-md"
-                            }`}
+                            className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-300 ease-out font-bold uppercase tracking-wide ${selectedTeam === team.id || (!selectedTeam && team === currentTeams[0])
+                              ? "bg-blue-600 text-white shadow-lg"
+                              : "text-gray-600 hover:bg-gray-50 hover:shadow-md"
+                              }`}
                           >
                             <span className="break-words">{team.number}</span>
                           </button>
@@ -365,11 +412,10 @@ export default function History() {
                         <button
                           key={year}
                           onClick={() => handleYearSelect(year)}
-                          className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ease-out font-bold uppercase tracking-wide ${
-                            selectedYear === year
-                              ? "bg-[#1a1a1f] text-white shadow-lg"
-                              : "text-gray-700 hover:bg-gray-100 hover:shadow-md"
-                          }`}
+                          className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ease-out font-bold uppercase tracking-wide ${selectedYear === year
+                            ? "bg-[#1a1a1f] text-white shadow-lg"
+                            : "text-gray-700 hover:bg-gray-100 hover:shadow-md"
+                            }`}
                         >
                           {year}
                         </button>
@@ -536,7 +582,11 @@ export default function History() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      {displayTeam.photos.length === 0 ? (
+                      {photosLoading ? (
+                        <div className="flex justify-center py-12">
+                          <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
+                        </div>
+                      ) : teamPhotos.length === 0 ? (
                         <div className="text-center py-8">
                           <p className="text-gray-500 text-base sm:text-lg">
                             No photos found for this team in {selectedYear}.
@@ -550,7 +600,7 @@ export default function History() {
                           initial="hidden"
                           animate="visible"
                         >
-                          {displayTeam.photos.map((photo, index) => (
+                          {teamPhotos.map((photo, index) => (
                             <motion.div
                               key={index}
                               variants={contentVariants}

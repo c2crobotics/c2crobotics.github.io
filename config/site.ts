@@ -57,7 +57,6 @@ export type SiteConfig = {
   siteURLs: {
     [key: string]: string
   }
-  gallery: GalleryData
   sponsors: Sponsor[]
   stats: StatItem[]
 }
@@ -130,76 +129,6 @@ export const linksData = {
   facebook: "https://www.facebook.com/profile.php?id=100063715805638",
   twitter: "https://x.com/c2c_robotics",
   youtube: "https://www.youtube.com/channel/UCgZzPysyfr9m7b-pOD_6Yng",
-}
-
-const galleryData: GalleryData = {
-  carouselImages: ["/gallery/NJIT2024/NJIT2024_September21_JHO [IMG_5185].webp", "/gallery/2024-2025 Rapid_Relay/Worlds2025_May12_JHO [IMG_2320].webp", "/gallery/2024-2025 Rapid_Relay/Worlds2025_May12_JHO [IMG_2312].webp", "/gallery/NJIT2024/NJIT2024_September21_JHO [IMG_5392].webp", "/gallery/NJIT2024/NJIT2024_September22_JHO [IMG_6063].webp"],
-  albums: {
-    "2024-2025": {
-      name: "Rapid Relay",
-      subcategories: {
-        team_photos: {
-          name: "Team Photos",
-          images: ["/gallery/2024-2025 Rapid_Relay/Worlds2025_May12_JHO [IMG_2587].webp"],
-        },
-        events: {
-          name: "Competitions",
-          images: [
-            "/gallery/2024-2025 Rapid_Relay/Worlds2025_May12_JHO [IMG_2427].webp",
-            "/gallery/2024-2025 Rapid_Relay/Worlds2025_May12_JHO [IMG_2312].webp",
-            "/gallery/2024-2025 Rapid_Relay/Worlds2025_May12_JHO [IMG_2320].webp",
-            "/gallery/2024-2025 Rapid_Relay/Worlds2025_May12_JHO [IMG_2496].webp",
-            "/gallery/2024-2025 Rapid_Relay/Worlds2025_May12_JHO [IMG_2341].webp",
-          ],
-        },
-        robots: {
-          name: "Robots",
-          images: [
-            "/gallery/2024-2025 Rapid_Relay/Worlds2025_May12_JHO [IMG_2327].webp",
-            "/gallery/2024-2025 Rapid_Relay/Worlds2025_May12_JHO [IMG_2331].webp",
-          ],
-        },
-      },
-    },
-    "2023-2024": {
-      name: "NJIT 2024",
-      subcategories: {
-        team_photos: {
-          name: "Team Photos",
-          images: [
-            "/gallery/NJIT2024/NJIT2024_September21_JHO [IMG_5267].webp",
-            "/gallery/NJIT2024/NJIT2024_September21_JHO [IMG_5185].webp",
-            "/gallery/NJIT2024/NJIT2024_September21_JHO [IMG_5042].webp",
-            "/gallery/NJIT2024/NJIT2024_September22_JHO [IMG_5843].webp",
-          ],
-        },
-        competitions: {
-          name: "Competitions",
-          images: [
-            "/gallery/NJIT2024/NJIT2024_September22_JHO [IMG_6063].webp",
-            "/gallery/NJIT2024/NJIT2024_September21_JHO [IMG_4967].webp",
-            "/gallery/NJIT2024/NJIT2024_September21_JHO [IMG_5456].webp",
-            "/gallery/NJIT2024/NJIT2024_September21_JHO [IMG_5382].webp",
-            "/gallery/NJIT2024/NJIT2024_September21_JHO [IMG_5345].webp",
-            "/gallery/NJIT2024/NJIT2024_September21_JHO [IMG_5392].webp",
-
-          ],
-        },
-        robots: {
-          name: "Robots",
-          images: [
-            "/gallery/NJIT2024/NJIT2024_September21_JHO [IMG_5340].webp",
-            "/gallery/NJIT2024/NJIT2024_September21_JHO [IMG_5329].webp",
-            "/gallery/NJIT2024/NJIT2024_September22_JHO [IMG_5798].webp",
-            "/gallery/NJIT2024/NJIT2024_September22_JHO [IMG_5681].webp",
-            "/gallery/NJIT2024/NJIT2024_September22_JHO [IMG_5677].webp",
-            "/gallery/NJIT2024/NJIT2024_September22_JHO [IMG_6136].webp",
-
-          ],
-        },
-      },
-    },
-  },
 }
 
 const sponsorsData: Sponsor[] = [
@@ -278,7 +207,6 @@ export const siteConfig: SiteConfig = {
   description: "The official website for the C2C Robotics.",
   navItems: navItemsData,
   links: linksData,
-  gallery: galleryData,
   sponsors: sponsorsData,
   stats: statsData,
   siteURLs: siteURLsData,
