@@ -244,8 +244,8 @@ const statsData: StatItem[] = [
   },
   {
     icon: Users,
-    label: "VRC/VIQRC Teams",
-    value: 6,
+    label: "V5RC/VIQRC/VURC Teams",
+    value: 10,
     suffix: "",
     color: "text-green-500",
     bgColor: "bg-green-50",
