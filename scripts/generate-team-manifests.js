@@ -9,7 +9,7 @@ import { writeFileSync, mkdirSync } from "fs";
 import { dirname } from "path";
 
 // ========== CONFIGURATION ==========
-const BUCKET_NAME = 'storage-images123';
+const BUCKET_NAME = 'c2crobotics-website';
 const REGION = "us-east-1";
 const BASE_PREFIX = "history/";
 const OUTPUT_DIR = "public/manifests";

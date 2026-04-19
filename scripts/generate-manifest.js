@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const BUCKET = 'storage-images123';
+const BUCKET = 'c2crobotics-website';
 const REGION = 'us-east-1';
 const OUTPUT_DIR = path.join(__dirname, '../public/manifests');
 const GALLERY_MANIFEST = path.join(OUTPUT_DIR, 'gallery-manifest.json');
