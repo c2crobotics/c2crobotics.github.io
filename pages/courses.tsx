@@ -18,8 +18,8 @@ import {
   summerCourses,
 } from "../config/courses"
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useSearchParams, useRouter } from "next/navigation"
+import { useState, useCallback, useMemo } from "react"
 import Image from "next/image"
 
 const containerVariants: Variants = {
@@ -448,18 +448,21 @@ export default function CoursesPage() {
   const [summerTags, setSummerTags] = useState<string[]>([])
 
   const searchParams = useSearchParams()
-  const tabFromUrl = searchParams.get("tab")
-  const [activeTab, setActiveTab] = useState(tabFromUrl || "jan-april")
+  const router = useRouter()
 
-  useEffect(() => {
-    const tabParam = searchParams.get("tab")
-    if (tabParam && ["jan-april", "summer", "fall", "holiday"].includes(tabParam)) {
-      const frame = requestAnimationFrame(() => {
-        setActiveTab(tabParam)
-      })
-      return () => cancelAnimationFrame(frame)
-    }
+  // Derive active tab directly from URL – no state, no effect
+  const activeTab = useMemo(() => {
+    const tab = searchParams.get("tab")
+    return tab && ["jan-april", "summer", "fall", "holiday"].includes(tab) ? tab : "jan-april"
   }, [searchParams])
+
+  // Update URL when user selects a tab – only side effect is router.replace
+  const handleTabChange = useCallback(
+    (value: string) => {
+      router.replace(`?tab=${value}`, { scroll: false })
+    },
+    [router]
+  )
 
   const filteredJanAprilCourses =
     janAprilTags.length === 0
@@ -512,7 +515,7 @@ export default function CoursesPage() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-4">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
