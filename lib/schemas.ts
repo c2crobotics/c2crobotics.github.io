@@ -21,4 +21,5 @@ export const formSchema = z.object({
     .max(15, { message: "Phone number must not exceed 15 digits." }),
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
   "h-captcha-response": z.string().min(1, "Please complete the captcha verification"),
+  website: z.string().max(0, "Unexpected error"),
 })

@@ -10,12 +10,15 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
 import { formSchema } from "@/lib/schemas"
-import HCaptcha from '@hcaptcha/react-hcaptcha';
+import HCaptcha from "@hcaptcha/react-hcaptcha"
 
-export default function ContactFormSimple() {
+const HCAPTCHA_SITEKEY = "50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+
+export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const submittingRef = useRef(false)
   const { toast } = useToast()
-  const captchaRef = useRef<HCaptcha>(null);
+  const captchaRef = useRef<HCaptcha>(null)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -26,14 +29,27 @@ export default function ContactFormSimple() {
       phone: "",
       message: "",
       "h-captcha-response": "",
+      website: "",
     },
   })
 
   const onHCaptchaChange = (token: string) => {
-    form.setValue("h-captcha-response", token);
-  };
+    form.setValue("h-captcha-response", token)
+  }
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (values.website) {
+      toast({
+        title: "Message sent successfully!",
+        description: `Thank you ${values.firstName}! We'll get back to you soon.`,
+      })
+      form.reset()
+      captchaRef.current?.resetCaptcha()
+      return
+    }
+
+    if (submittingRef.current) return
+    submittingRef.current = true
     setIsSubmitting(true)
 
     try {
@@ -45,7 +61,7 @@ export default function ContactFormSimple() {
       formData.append("email", values.email)
       formData.append("phone", values.phone)
       formData.append("message", values.message)
-      formData.append("h-captcha-response", values["h-captcha-response"]);
+      formData.append("h-captcha-response", values["h-captcha-response"])
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -56,11 +72,18 @@ export default function ContactFormSimple() {
         toast({
           title: "Message sent successfully!",
           description: `Thank you ${values.firstName}! We'll get back to you soon.`,
-          variant: "default",
         })
         form.reset()
-        captchaRef.current?.resetCaptcha();
+        captchaRef.current?.resetCaptcha()
       } else {
+        const errorData = await response.json().catch(() => null)
+        toast({
+          title: "Submission failed",
+          description: errorData?.message || "Please check your input and try again.",
+          variant: "destructive",
+        })
+        captchaRef.current?.resetCaptcha()
+        form.setValue("h-captcha-response", "", { shouldValidate: false })
       }
     } catch (error) {
       toast({
@@ -69,8 +92,11 @@ export default function ContactFormSimple() {
         variant: "destructive",
       })
       console.error("Form submission error:", error)
+      captchaRef.current?.resetCaptcha()
+      form.setValue("h-captcha-response", "", { shouldValidate: false })
     } finally {
       setIsSubmitting(false)
+      submittingRef.current = false
     }
   }
 
@@ -136,6 +162,21 @@ export default function ContactFormSimple() {
             />
           </div>
 
+          <div className="absolute opacity-0 pointer-events-none" aria-hidden="true">
+            <FormField
+              control={form.control}
+              name="website"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="hidden">Website</FormLabel>
+                  <FormControl>
+                    <Input tabIndex={-1} autoComplete="off" placeholder="leave empty" {...field} />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+          </div>
+
           <FormField
             control={form.control}
             name="message"
@@ -157,7 +198,7 @@ export default function ContactFormSimple() {
           <div className="flex justify-center">
             <HCaptcha
               ref={captchaRef}
-              sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+              sitekey={HCAPTCHA_SITEKEY}
               reCaptchaCompat={false}
               onVerify={onHCaptchaChange}
             />

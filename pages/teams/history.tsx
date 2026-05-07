@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Trophy, Calendar, MapPin, Menu, X, Camera, ArrowLeft, Loader2 } from 'lucide-react'
+import { Star, Trophy, Calendar, CalendarDays, MapPin, Menu, X, Camera, ArrowLeft, Loader2, ExternalLink } from 'lucide-react'
 import { motion, AnimatePresence, cubicBezier } from "framer-motion"
 import { DataGenerator, WebsiteData } from "@/history-config/data-generator"
 import { siteConfig } from "@/config/site"
@@ -488,36 +488,54 @@ export default function History() {
                           initial="hidden"
                           animate="visible"
                         >
-                          {displayTeam.achievements.map((achievement, index) => (
-                            <motion.div
-                              key={index}
-                              variants={contentVariants}
-                              className="p-4 sm:p-6 bg-gray-50 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300"
-                              whileHover={{ scale: 1.02, y: -2 }}
-                            >
-                              <div className="flex flex-col">
-                                <div className="flex-1">
-                                  <h4 className="font-bold text-base sm:text-lg text-[#1a1a1f] mb-2 uppercase tracking-wide break-words">
-                                    {achievement.name}
-                                  </h4>
-                                  <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 text-sm text-gray-600 space-y-1 sm:space-y-0">
-                                    <div className="flex items-center font-medium">
-                                      <Calendar className="w-4 h-4 mr-2 text-blue-500 flex-shrink-0" />
-                                      <span className="break-words">{achievement.name}</span>
+                          {/* Sort by latest date first */}
+                          {[...displayTeam.achievements]
+                            .sort((a, b) => new Date(b.sortDate).getTime() - new Date(a.sortDate).getTime())
+                            .map((achievement, index) => (
+                              <motion.div
+                                key={index}
+                                variants={contentVariants}
+                                className="p-4 sm:p-6 bg-gray-50 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300"
+                                whileHover={{ scale: 1.02, y: -2 }}
+                              >
+                                <div className="flex flex-col">
+                                  <div className="flex-1">
+                                    <div className="flex items-start justify-between">
+                                      <h4 className="font-bold text-base sm:text-lg text-[#1a1a1f] mb-2 uppercase tracking-wide break-words">
+                                        {achievement.name}
+                                      </h4>
+                                      {achievement.eventUrl && achievement.eventUrl !== "#" && (
+                                        <a
+                                          href={achievement.eventUrl}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="text-blue-600 hover:text-blue-800 transition-colors flex-shrink-0 ml-2"
+                                          title="View event on RobotEvents"
+                                        >
+                                          <ExternalLink className="w-4 h-4" />
+                                        </a>
+                                      )}
                                     </div>
-                                    <div className="flex items-center font-medium">
-                                      <Calendar className="w-4 h-4 mr-2 text-blue-500 flex-shrink-0" />
-                                      <span className="break-words">{achievement.date}</span>
-                                    </div>
-                                    <div className="flex items-center font-medium">
-                                      <MapPin className="w-4 h-4 mr-2 text-red-500 flex-shrink-0" />
-                                      <span className="break-words">{achievement.location}</span>
+                                    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 text-sm text-gray-600 space-y-1 sm:space-y-0">
+                                      {achievement.eventName && (
+                                        <div className="flex items-center font-medium text-gray-700 uppercase tracking-wide">
+                                          <Star className="w-4 h-4 mr-2 text-purple-500 flex-shrink-0" />
+                                          <span className="break-words">{achievement.eventName}</span>
+                                        </div>
+                                      )}
+                                      <div className="flex items-center font-medium">
+                                        <Calendar className="w-4 h-4 mr-2 text-blue-500 flex-shrink-0" />
+                                        <span className="break-words">{achievement.date}</span>
+                                      </div>
+                                      <div className="flex items-center font-medium">
+                                        <MapPin className="w-4 h-4 mr-2 text-red-500 flex-shrink-0" />
+                                        <span className="break-words">{achievement.location}</span>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
-                            </motion.div>
-                          ))}
+                              </motion.div>
+                            ))}
                         </motion.div>
                       )}
                     </CardContent>
@@ -548,28 +566,44 @@ export default function History() {
                           initial="hidden"
                           animate="visible"
                         >
-                          {displayTeam.competitions.map((competition, index) => (
-                            <motion.div
-                              key={index}
-                              variants={contentVariants}
-                              className="p-4 sm:p-6 bg-gray-50 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300"
-                              whileHover={{ scale: 1.02, y: -2 }}
-                            >
-                              <h4 className="font-bold text-base sm:text-lg text-[#1a1a1f] mb-3 uppercase tracking-wide break-words">
-                                {competition.name}
-                              </h4>
-                              <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 text-sm text-gray-600 space-y-1 sm:space-y-0">
-                                <div className="flex items-center font-medium">
-                                  <Calendar className="w-4 h-4 mr-2 text-blue-500 flex-shrink-0" />
-                                  <span className="break-words">{competition.date}</span>
+                          {/* Sort by latest date first */}
+                          {[...displayTeam.competitions]
+                            .sort((a, b) => new Date(b.sortDate).getTime() - new Date(a.sortDate).getTime())
+                            .map((competition, index) => (
+                              <motion.div
+                                key={index}
+                                variants={contentVariants}
+                                className="p-4 sm:p-6 bg-gray-50 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300"
+                                whileHover={{ scale: 1.02, y: -2 }}
+                              >
+                                <div className="flex items-start justify-between">
+                                  <h4 className="font-bold text-base sm:text-lg text-[#1a1a1f] mb-3 uppercase tracking-wide break-words">
+                                    {competition.name}
+                                  </h4>
+                                  {competition.eventUrl && competition.eventUrl !== "#" && (
+                                    <a
+                                      href={competition.eventUrl}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="text-blue-600 hover:text-blue-800 transition-colors flex-shrink-0 ml-2"
+                                      title="View event on RobotEvents"
+                                    >
+                                      <ExternalLink className="w-4 h-4" />
+                                    </a>
+                                  )}
                                 </div>
-                                <div className="flex items-center font-medium">
-                                  <MapPin className="w-4 h-4 mr-2 text-red-500 flex-shrink-0" />
-                                  <span className="break-words">{competition.location}</span>
+                                <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 text-sm text-gray-600 space-y-1 sm:space-y-0">
+                                  <div className="flex items-center font-medium">
+                                    <CalendarDays className="w-4 h-4 mr-2 text-blue-500 flex-shrink-0" />
+                                    <span className="break-words">{competition.date}</span>
+                                  </div>
+                                  <div className="flex items-center font-medium">
+                                    <MapPin className="w-4 h-4 mr-2 text-red-500 flex-shrink-0" />
+                                    <span className="break-words">{competition.location}</span>
+                                  </div>
                                 </div>
-                              </div>
-                            </motion.div>
-                          ))}
+                              </motion.div>
+                            ))}
                         </motion.div>
                       )}
                     </CardContent>

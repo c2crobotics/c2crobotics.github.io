@@ -1,24 +1,104 @@
 {
   "team": "62880B",
-  "generatedAt": "2026-04-03T20:23:15.543Z",
-  "totalImages": 3,
+  "generatedAt": "2026-05-07T01:14:16.941Z",
+  "totalImages": 19,
   "years": [
     {
       "year": "2026",
       "images": [
         {
-          "url": "https://storage-images123.s3.us-east-1.amazonaws.com/history/2026/62880B/NJIT2024_September21_JHO%20%5BIMG_5053%5D.webp",
-          "key": "history/2026/62880B/NJIT2024_September21_JHO [IMG_5053].webp",
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April25_JHO%20%5BIMG_0346%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April25_JHO [IMG_0346].jpg",
           "caption": ""
         },
         {
-          "url": "https://storage-images123.s3.us-east-1.amazonaws.com/history/2026/62880B/NJIT2024_September21_JHO%20%5BIMG_5133%5D.webp",
-          "key": "history/2026/62880B/NJIT2024_September21_JHO [IMG_5133].webp",
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April26_JHO%20%5BIMG_0454%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April26_JHO [IMG_0454].jpg",
           "caption": ""
         },
         {
-          "url": "https://storage-images123.s3.us-east-1.amazonaws.com/history/2026/62880B/NJIT2024_September21_JHO%20%5BIMG_5166%5D.webp",
-          "key": "history/2026/62880B/NJIT2024_September21_JHO [IMG_5166].webp",
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April26_JHO%20%5BIMG_0502%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April26_JHO [IMG_0502].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April26_JHO%20%5BIMG_0637%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April26_JHO [IMG_0637].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April26_JHO%20%5BIMG_0709%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April26_JHO [IMG_0709].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April26_JHO%20%5BIMG_2382%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April26_JHO [IMG_2382].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April26_JHO%20%5BIMG_2386%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April26_JHO [IMG_2386].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April26_JHO%20%5BIMG_2415%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April26_JHO [IMG_2415].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April27_JHO%20%5BIMG_0730%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April27_JHO [IMG_0730].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April27_JHO%20%5BIMG_0742%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April27_JHO [IMG_0742].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April27_JHO%20%5BIMG_0775%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April27_JHO [IMG_0775].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April27_JHO%20%5BIMG_0782%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April27_JHO [IMG_0782].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April27_JHO%20%5BIMG_0784%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April27_JHO [IMG_0784].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April27_JHO%20%5BIMG_2502%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April27_JHO [IMG_2502].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April27_JHO%20%5BIMG_2512%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April27_JHO [IMG_2512].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April27_JHO%20%5BIMG_2535%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April27_JHO [IMG_2535].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April27_JHO%20%5BIMG_2547%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April27_JHO [IMG_2547].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April27_JHO%20%5BIMG_2589%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April27_JHO [IMG_2589].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/62880B/Worlds2026_April27_JHO%20%5BIMG_2600%5D.jpg",
+          "key": "history/2026/62880B/Worlds2026_April27_JHO [IMG_2600].jpg",
           "caption": ""
         }
       ]

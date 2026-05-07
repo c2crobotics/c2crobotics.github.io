@@ -1,21 +1,29 @@
 {
-  "generatedAt": "2026-04-03T20:23:15.543Z",
+  "generatedAt": "2026-05-07T01:14:17.054Z",
   "teams": [
     {
-      "name": "62880A",
-      "totalImages": 3,
-      "years": [
-        "2026"
-      ],
-      "manifestUrl": "team-62880A.json"
-    },
-    {
       "name": "62880B",
-      "totalImages": 3,
+      "totalImages": 19,
       "years": [
         "2026"
       ],
       "manifestUrl": "team-62880B.json"
+    },
+    {
+      "name": "65950B",
+      "totalImages": 6,
+      "years": [
+        "2026"
+      ],
+      "manifestUrl": "team-65950B.json"
+    },
+    {
+      "name": "OOPS",
+      "totalImages": 20,
+      "years": [
+        "2026"
+      ],
+      "manifestUrl": "team-OOPS.json"
     }
   ]
 }

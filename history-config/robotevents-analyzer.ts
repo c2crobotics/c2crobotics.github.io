@@ -155,6 +155,32 @@ export class RobotEventsAnalyzer {
     }
   }
 
+  private formatDateRange(start: string, end: string): string {
+    if (!start) return "Unknown Date"
+
+    const startDate = new Date(start)
+    if (!end || start === end) {
+      return this.formatDate(start)
+    }
+
+    const endDate = new Date(end)
+
+    // If same year
+    const startYear = startDate.getFullYear()
+    const endYear = endDate.getFullYear()
+
+    if (startYear === endYear) {
+      const startStr = startDate.toLocaleDateString("en-US", { month: "long", day: "numeric" })
+      const endStr = endDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+      return `${startStr} - ${endStr}`
+    }
+
+    // Different years: show full dates
+    const startStr = this.formatDate(start)
+    const endStr = this.formatDate(end)
+    return `${startStr} - ${endStr}`
+  }
+
   async analyzeTeam(teamNumber: string): Promise<TeamStats | null> {
     const team = await this.findTeamByNumber(teamNumber)
     if (!team || !team.id) {
@@ -241,14 +267,22 @@ export class RobotEventsAnalyzer {
             date: event?.start ? this.formatDate(event.start) : "Unknown Date",
             location: event?.location ? this.formatLocation(event.location) : "Unknown Location",
             eventName: award.event?.name || "Unknown Event",
+            sortDate: event?.start || "",
+            eventUrl: event?.sku && event?.program?.name
+              ? `https://www.robotevents.com/robot-competitions/${event.program.name.toLowerCase().replace(/\s+/g, '-')}/${event.sku}.html#awards`
+              : "#",
           }
         })
 
         const competitionDetails: CompetitionDetail[] = season.events.map((event) => ({
           name: event.name || "Unknown Event",
-          date: event.start ? this.formatDate(event.start) : "Unknown Date",
+          date: this.formatDateRange(event.start, event.end),
           location: event.location ? this.formatLocation(event.location) : "Unknown Location",
           level: event.level || "Unknown Level",
+          sortDate: event.start || "",
+          eventUrl: event.sku && event.program?.name
+            ? `https://www.robotevents.com/robot-competitions/${event.program.name.toLowerCase().replace(/\s+/g, '-')}/${event.sku}.html#general-info`
+            : "#",
         }))
 
         return {

@@ -1,4 +1,26 @@
 {
-  "carouselImages": [],
-  "albums": {}
+  "carouselImages": [
+    "https://c2crobotics-website.s3.us-east-1.amazonaws.com/gallery/carousel/Worlds2026_April23_JHO [IMG_9757]_horizontal.jpg",
+    "https://c2crobotics-website.s3.us-east-1.amazonaws.com/gallery/carousel/Worlds2026_April23_JHO [IMG_9802].jpg",
+    "https://c2crobotics-website.s3.us-east-1.amazonaws.com/gallery/carousel/Worlds2026_April27_JHO [IMG_0841].jpg",
+    "https://c2crobotics-website.s3.us-east-1.amazonaws.com/gallery/carousel/Worlds2026_April27_JHO [IMG_1008].jpg",
+    "https://c2crobotics-website.s3.us-east-1.amazonaws.com/gallery/carousel/Worlds2026_April27_JHO [IMG_1055].jpg",
+    "https://c2crobotics-website.s3.us-east-1.amazonaws.com/gallery/carousel/Worlds2026_April27_JHO [IMG_2600].jpg"
+  ],
+  "albums": {
+    "pushback-2026": {
+      "name": "Pushback 2026",
+      "subcategories": {
+        "robots": {
+          "name": "Robots",
+          "images": [
+            "https://c2crobotics-website.s3.us-east-1.amazonaws.com/gallery/albums/pushback-2026/robots/Worlds2026_April23_JHO [IMG_9036].jpg",
+            "https://c2crobotics-website.s3.us-east-1.amazonaws.com/gallery/albums/pushback-2026/robots/Worlds2026_April23_JHO [IMG_9085].jpg",
+            "https://c2crobotics-website.s3.us-east-1.amazonaws.com/gallery/albums/pushback-2026/robots/Worlds2026_April23_JHO [IMG_9435].jpg",
+            "https://c2crobotics-website.s3.us-east-1.amazonaws.com/gallery/albums/pushback-2026/robots/Worlds2026_April27_JHO [IMG_0775].jpg"
+          ]
+        }
+      }
+    }
+  }
 }

@@ -10,11 +10,16 @@ interface WebsiteTeamData {
     place: string
     date: string
     location: string
+    sortDate: string;
+    eventUrl: string;
+    eventName: string;
   }>
   competitions: Array<{
     name: string
     date: string
     location: string
+    sortDate: string;
+    eventUrl: string;
   }>
 }
 
@@ -113,6 +118,9 @@ export class DataGenerator {
           place: "Award",
           date: award.date,
           location: award.location,
+          sortDate: award.sortDate,
+          eventUrl: award.eventUrl,
+          eventName: award.eventName,
         }))
 
         // Add competitions
@@ -120,6 +128,8 @@ export class DataGenerator {
           name: comp.name,
           date: comp.date,
           location: comp.location,
+          sortDate: comp.sortDate,
+          eventUrl: comp.eventUrl,
         }))
 
         existingTeam.achievements.push(...achievements)

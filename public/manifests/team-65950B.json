@@ -1,0 +1,42 @@
+{
+  "team": "65950B",
+  "generatedAt": "2026-05-07T01:14:16.969Z",
+  "totalImages": 6,
+  "years": [
+    {
+      "year": "2026",
+      "images": [
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/65950B/Worlds2026_April29_JHO%20%5BIMG_1244%5D.jpg",
+          "key": "history/2026/65950B/Worlds2026_April29_JHO [IMG_1244].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/65950B/Worlds2026_April29_JHO%20%5BIMG_1248%5D.jpg",
+          "key": "history/2026/65950B/Worlds2026_April29_JHO [IMG_1248].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/65950B/Worlds2026_April29_JHO%20%5BIMG_1278%5D.jpg",
+          "key": "history/2026/65950B/Worlds2026_April29_JHO [IMG_1278].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/65950B/Worlds2026_April29_JHO%20%5BIMG_1322%5D.jpg",
+          "key": "history/2026/65950B/Worlds2026_April29_JHO [IMG_1322].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/65950B/Worlds2026_April29_JHO%20%5BIMG_1332%5D.jpg",
+          "key": "history/2026/65950B/Worlds2026_April29_JHO [IMG_1332].jpg",
+          "caption": ""
+        },
+        {
+          "url": "https://c2crobotics-website.s3.us-east-1.amazonaws.com/history/2026/65950B/Worlds2026_April30_JHO%20%5BIMG_1533%5D.jpg",
+          "key": "history/2026/65950B/Worlds2026_April30_JHO [IMG_1533].jpg",
+          "caption": ""
+        }
+      ]
+    }
+  ]
+}

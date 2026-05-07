@@ -119,8 +119,18 @@ export interface AwardDetail {
   date: string
   location: string
   eventName: string
+  sortDate: string
+  eventUrl: string
 }
 
+export interface CompetitionDetail {
+  name: string
+  date: string
+  location: string
+  level: string
+  sortDate: string
+  eventUrl: string
+}
 export interface CompetitionDetail {
   name: string
   date: string

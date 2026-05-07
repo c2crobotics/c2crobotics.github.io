@@ -13,10 +13,10 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   modularizeImports: {
-      "react-icons/?(((\\w*)?/?)*)": {
-          transform: "@react-icons/all-files/{{ matches.[1] }}/{{ member }}",
-          skipDefaultConversion: true
-      }
+    "react-icons/?(((\\w*)?/?)*)": {
+      transform: "@react-icons/all-files/{{ matches.[1] }}/{{ member }}",
+      skipDefaultConversion: true
+    }
   },
   reactStrictMode: true,
   experimental: {
@@ -34,6 +34,8 @@ const nextConfig = {
   },
   env: {
     ROBOTEVENTS_API_TOKEN: process.env.ROBOTEVENTS_API_TOKEN,
+    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+    AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
   }
 }
 
