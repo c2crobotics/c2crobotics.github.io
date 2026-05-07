@@ -66,7 +66,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <meta name="viewport" content="initial-scale=1, width=device-width" />
         </Head>
 
-        <div className="flex-grow bg-gray-50">
+        <div className="grow bg-gray-50">
           <Component {...pageProps} />
         </div>
 
@@ -85,9 +85,9 @@ export default function App({ Component, pageProps }: AppProps) {
           <div className="py-6 sm:py-10 bg-[#1a1a1f] px-4 sm:px-6">
             <nav className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 mb-4 sm:mb-2">
               {siteConfig.navItems.map((item) => (
-                <Link 
+                <Link
                   key={item.href}
-                  href={item.href} 
+                  href={item.href}
                   className="uppercase font-semibold tracking-wide text-gray-300 hover:text-[#50a1ff] transition text-sm sm:text-base"
                   onClick={(e) => handleFooterNavClick(e, item.href)}
                 >
@@ -99,16 +99,16 @@ export default function App({ Component, pageProps }: AppProps) {
               © 2026 Coast 2 Coast Robotics. All rights reserved.
             </div>
             <nav className="flex flex-wrap justify-center items-center gap-1 sm:gap-2 text-center text-gray-400 text-sm sm:text-base mt-3 sm:mt-2 px-2">
-              <Link 
-                href={siteConfig.siteURLs.tos} 
+              <Link
+                href={siteConfig.siteURLs.tos}
                 className="tracking-wide hover:text-[#50a1ff] transition whitespace-nowrap"
                 onClick={(e) => handleFooterNavClick(e, siteConfig.siteURLs.tos)}
               >
                 Terms of Service
               </Link>
               <span className="text-gray-500">|</span>
-              <Link 
-                href={siteConfig.siteURLs.pp} 
+              <Link
+                href={siteConfig.siteURLs.pp}
                 className="tracking-wide hover:text-[#50a1ff] transition whitespace-nowrap"
                 onClick={(e) => handleFooterNavClick(e, siteConfig.siteURLs.pp)}
               >

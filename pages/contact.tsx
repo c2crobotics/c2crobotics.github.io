@@ -80,7 +80,7 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.
+            We&apos;d love to hear from you. Fill out the form below and we&apos;ll get back to you as soon as possible.
           </motion.p>
         </div>
       </motion.div>

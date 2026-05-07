@@ -2,10 +2,17 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import type { z } from "zod"
 import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
@@ -16,7 +23,7 @@ const HCAPTCHA_SITEKEY = "50b2fe65-b00b-4b9e-ad62-3ba471098be2"
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const submittingRef = useRef(false)
+  const [resetCaptchaTrigger, setResetCaptchaTrigger] = useState(0)
   const { toast } = useToast()
   const captchaRef = useRef<HCaptcha>(null)
 
@@ -33,6 +40,11 @@ export default function ContactForm() {
     },
   })
 
+  // Reset hCaptcha whenever the trigger changes
+  useEffect(() => {
+    captchaRef.current?.resetCaptcha()
+  }, [resetCaptchaTrigger])
+
   const onHCaptchaChange = (token: string) => {
     form.setValue("h-captcha-response", token)
   }
@@ -44,12 +56,12 @@ export default function ContactForm() {
         description: `Thank you ${values.firstName}! We'll get back to you soon.`,
       })
       form.reset()
-      captchaRef.current?.resetCaptcha()
+      setResetCaptchaTrigger((prev) => prev + 1)
       return
     }
 
-    if (submittingRef.current) return
-    submittingRef.current = true
+    // Prevent duplicate submissions
+    if (isSubmitting) return
     setIsSubmitting(true)
 
     try {
@@ -74,15 +86,15 @@ export default function ContactForm() {
           description: `Thank you ${values.firstName}! We'll get back to you soon.`,
         })
         form.reset()
-        captchaRef.current?.resetCaptcha()
       } else {
         const errorData = await response.json().catch(() => null)
         toast({
           title: "Submission failed",
-          description: errorData?.message || "Please check your input and try again.",
+          description:
+            errorData?.message || "Please check your input and try again.",
           variant: "destructive",
         })
-        captchaRef.current?.resetCaptcha()
+        // Clear only the captcha token in the form on failure
         form.setValue("h-captcha-response", "", { shouldValidate: false })
       }
     } catch (error) {
@@ -92,11 +104,11 @@ export default function ContactForm() {
         variant: "destructive",
       })
       console.error("Form submission error:", error)
-      captchaRef.current?.resetCaptcha()
       form.setValue("h-captcha-response", "", { shouldValidate: false })
     } finally {
       setIsSubmitting(false)
-      submittingRef.current = false
+      // Reset the captcha widget after every submission attempt
+      setResetCaptchaTrigger((prev) => prev + 1)
     }
   }
 
@@ -141,7 +153,11 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="your.email@example.com" {...field} />
+                    <Input
+                      type="email"
+                      placeholder="your.email@example.com"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -162,6 +178,7 @@ export default function ContactForm() {
             />
           </div>
 
+          {/* Honeypot field – visually hidden, catches bots */}
           <div className="absolute opacity-0 pointer-events-none" aria-hidden="true">
             <FormField
               control={form.control}
@@ -170,7 +187,12 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel className="hidden">Website</FormLabel>
                   <FormControl>
-                    <Input tabIndex={-1} autoComplete="off" placeholder="leave empty" {...field} />
+                    <Input
+                      tabIndex={-1}
+                      autoComplete="off"
+                      placeholder="leave empty"
+                      {...field}
+                    />
                   </FormControl>
                 </FormItem>
               )}

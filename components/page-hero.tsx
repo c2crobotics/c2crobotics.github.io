@@ -39,7 +39,7 @@ export default function ImagesSlider({ images, interval = 6000, className, child
             alt={`Slide ${index + 1}`}
             fill
             priority={index === 0}
-            quality={95}
+            quality={75}
             sizes="100vw"
             className="object-cover"
             unoptimized={false}
@@ -47,8 +47,8 @@ export default function ImagesSlider({ images, interval = 6000, className, child
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-black/60" />
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-blue-900/60 to-gray-900/80" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/10 to-black/60" />
+      <div className="absolute inset-0 bg-linear-to-r from-gray-900/80 via-blue-900/60 to-gray-900/80" />
       <div className="relative z-10 flex items-center justify-center h-full">{children}</div>
     </div>
   )

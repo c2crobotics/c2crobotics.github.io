@@ -91,11 +91,10 @@ export default function ContactInfo() {
                     <div key={index} className="flex justify-between items-center py-1">
                       <span className="font-medium text-gray-700 dark:text-gray-300">{schedule.day}</span>
                       <span
-                        className={`text-sm ${
-                          schedule.hours === "Closed"
-                            ? "text-red-600 dark:text-red-400"
-                            : "text-gray-600 dark:text-gray-400"
-                        }`}
+                        className={`text-sm ${schedule.hours === "Closed"
+                          ? "text-red-600 dark:text-red-400"
+                          : "text-gray-600 dark:text-gray-400"
+                          }`}
                       >
                         {schedule.hours}
                       </span>

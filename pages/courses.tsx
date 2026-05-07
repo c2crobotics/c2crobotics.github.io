@@ -135,7 +135,7 @@ function ScheduleImage({ category }: { category: string }) {
               fill
               className="rounded-lg border object-contain"
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 672px"
-              quality={85}
+              quality={75}
               priority
             />
           </div>
@@ -163,7 +163,7 @@ function CompactCourseCard({ course, index }: { course: any; index: number }) {
               fill
               className="object-cover rounded-t-lg"
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-              quality={80}
+              quality={75}
               loading={index < 8 ? "eager" : "lazy"}
             />
           </motion.div>
@@ -184,9 +184,9 @@ function CompactCourseCard({ course, index }: { course: any; index: number }) {
           </div>
         </div>
 
-        <CardHeader className="p-4 pb-2 flex-shrink-0">
-          <CardTitle className="text-base leading-tight min-h-[2.5rem] flex items-start">{course.title}</CardTitle>
-          <CardDescription className="text-xs line-clamp-2 min-h-[2rem] flex items-start">
+        <CardHeader className="p-4 pb-2 shrink-0">
+          <CardTitle className="text-base leading-tight min-h-10 flex items-start">{course.title}</CardTitle>
+          <CardDescription className="text-xs line-clamp-2 min-h-8 flex items-start">
             {course.description}
           </CardDescription>
         </CardHeader>
@@ -194,15 +194,15 @@ function CompactCourseCard({ course, index }: { course: any; index: number }) {
         <CardContent className="p-4 pt-0 flex-1 flex flex-col">
           <div className="grid grid-cols-2 gap-2 text-xs mb-3">
             <div className="flex items-center gap-1">
-              <Users className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+              <Users className="h-3 w-3 text-muted-foreground shrink-0" />
               <span className="truncate">{course.gradeLevel}</span>
             </div>
             <div className="flex items-center gap-1">
-              <Calendar className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+              <Calendar className="h-3 w-3 text-muted-foreground shrink-0" />
               <span className="truncate">{course.dates}</span>
             </div>
             <div className="flex items-start gap-1 col-span-2">
-              <Clock className="h-3 w-3 text-muted-foreground flex-shrink-0 mt-0.5" />
+              <Clock className="h-3 w-3 text-muted-foreground shrink-0 mt-0.5" />
               <span className="text-xs leading-tight">{course.time}</span>
             </div>
           </div>
@@ -454,7 +454,10 @@ export default function CoursesPage() {
   useEffect(() => {
     const tabParam = searchParams.get("tab")
     if (tabParam && ["jan-april", "summer", "fall", "holiday"].includes(tabParam)) {
-      setActiveTab(tabParam)
+      const frame = requestAnimationFrame(() => {
+        setActiveTab(tabParam)
+      })
+      return () => cancelAnimationFrame(frame)
     }
   }, [searchParams])
 
@@ -531,90 +534,90 @@ export default function CoursesPage() {
             </TabsList>
           </motion.div>
 
-            <TabsContent value="jan-april">
-              <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
-                <motion.div variants={itemVariants}>
-                  <h2 className="text-lg font-bold mb-2">{janAprilConfig.title}</h2>
-                  <p className="text-sm text-muted-foreground mb-4">{janAprilConfig.description}</p>
-                </motion.div>
-
-                <ClassDatesCard config={janAprilConfig.classDates} />
-                <ScheduleImage category="jan-april" />
-                <FilterTags courses={janAprilCourses} selectedTags={janAprilTags} onTagChange={setJanAprilTags} />
-
-                <motion.div
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
-                  variants={containerVariants}
-                >
-                  {filteredJanAprilCourses.map((course, index) => (
-                    <CompactCourseCard key={index} course={course} index={index} />
-                  ))}
-                </motion.div>
+          <TabsContent value="jan-april">
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
+              <motion.div variants={itemVariants}>
+                <h2 className="text-lg font-bold mb-2">{janAprilConfig.title}</h2>
+                <p className="text-sm text-muted-foreground mb-4">{janAprilConfig.description}</p>
               </motion.div>
-            </TabsContent>
 
-            <TabsContent value="summer">
-              <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
-                <motion.div variants={itemVariants}>
-                  <h2 className="text-lg font-bold mb-2">{summerConfig.title}</h2>
-                  <p className="text-sm text-muted-foreground mb-4">{summerConfig.description}</p>
-                </motion.div>
+              <ClassDatesCard config={janAprilConfig.classDates} />
+              <ScheduleImage category="jan-april" />
+              <FilterTags courses={janAprilCourses} selectedTags={janAprilTags} onTagChange={setJanAprilTags} />
 
-                <FilterTags courses={summerCourses} selectedTags={summerTags} onTagChange={setSummerTags} />
-
-                <motion.div
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
-                  variants={containerVariants}
-                >
-                  {filteredSummerCourses.map((course, index) => (
-                    <CompactCourseCard key={index} course={course} index={index} />
-                  ))}
-                </motion.div>
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+                variants={containerVariants}
+              >
+                {filteredJanAprilCourses.map((course, index) => (
+                  <CompactCourseCard key={index} course={course} index={index} />
+                ))}
               </motion.div>
-            </TabsContent>
+            </motion.div>
+          </TabsContent>
 
-            <TabsContent value="fall">
-              <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
-                <motion.div variants={itemVariants}>
-                  <h2 className="text-lg font-bold mb-2">{fallConfig.title}</h2>
-                  <p className="text-sm text-muted-foreground mb-4">{fallConfig.description}</p>
-                </motion.div>
-
-                <ClassDatesCard config={fallConfig.classDates} />
-                <ScheduleImage category="fall" />
-                <FilterTags courses={fallCourses} selectedTags={fallTags} onTagChange={setFallTags} />
-
-                <motion.div
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
-                  variants={containerVariants}
-                >
-                  {filteredFallCourses.map((course, index) => (
-                    <CompactCourseCard key={index} course={course} index={index} />
-                  ))}
-                </motion.div>
+          <TabsContent value="summer">
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
+              <motion.div variants={itemVariants}>
+                <h2 className="text-lg font-bold mb-2">{summerConfig.title}</h2>
+                <p className="text-sm text-muted-foreground mb-4">{summerConfig.description}</p>
               </motion.div>
-            </TabsContent>
 
-            <TabsContent value="holiday">
-              <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
-                <motion.div variants={itemVariants}>
-                  <h2 className="text-lg font-bold mb-2">{holidayConfig.title}</h2>
-                  <p className="text-sm text-muted-foreground mb-4">{holidayConfig.description}</p>
-                </motion.div>
+              <FilterTags courses={summerCourses} selectedTags={summerTags} onTagChange={setSummerTags} />
 
-                <SessionsCard config={holidayConfig.availableSessions} />
-                <FilterTags courses={holidayCourses} selectedTags={holidayTags} onTagChange={setHolidayTags} />
-
-                <motion.div
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
-                  variants={containerVariants}
-                >
-                  {filteredHolidayCourses.map((course, index) => (
-                    <CompactCourseCard key={index} course={course} index={index} />
-                  ))}
-                </motion.div>
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+                variants={containerVariants}
+              >
+                {filteredSummerCourses.map((course, index) => (
+                  <CompactCourseCard key={index} course={course} index={index} />
+                ))}
               </motion.div>
-            </TabsContent>
+            </motion.div>
+          </TabsContent>
+
+          <TabsContent value="fall">
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
+              <motion.div variants={itemVariants}>
+                <h2 className="text-lg font-bold mb-2">{fallConfig.title}</h2>
+                <p className="text-sm text-muted-foreground mb-4">{fallConfig.description}</p>
+              </motion.div>
+
+              <ClassDatesCard config={fallConfig.classDates} />
+              <ScheduleImage category="fall" />
+              <FilterTags courses={fallCourses} selectedTags={fallTags} onTagChange={setFallTags} />
+
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+                variants={containerVariants}
+              >
+                {filteredFallCourses.map((course, index) => (
+                  <CompactCourseCard key={index} course={course} index={index} />
+                ))}
+              </motion.div>
+            </motion.div>
+          </TabsContent>
+
+          <TabsContent value="holiday">
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
+              <motion.div variants={itemVariants}>
+                <h2 className="text-lg font-bold mb-2">{holidayConfig.title}</h2>
+                <p className="text-sm text-muted-foreground mb-4">{holidayConfig.description}</p>
+              </motion.div>
+
+              <SessionsCard config={holidayConfig.availableSessions} />
+              <FilterTags courses={holidayCourses} selectedTags={holidayTags} onTagChange={setHolidayTags} />
+
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+                variants={containerVariants}
+              >
+                {filteredHolidayCourses.map((course, index) => (
+                  <CompactCourseCard key={index} course={course} index={index} />
+                ))}
+              </motion.div>
+            </motion.div>
+          </TabsContent>
         </Tabs>
       </div>
     </div>

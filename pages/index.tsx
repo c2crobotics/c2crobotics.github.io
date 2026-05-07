@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from "react";
-import  ImagesSlider from "@/components/page-hero";
+import ImagesSlider from "@/components/page-hero";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/config/site"
 import Sponsors from "@/components/sponsor";
@@ -24,11 +24,16 @@ export default function Home() {
   const [taglineIndex, setTaglineIndex] = useState(0)
 
   useEffect(() => {
-    setIsClient(true);
+    const frame = requestAnimationFrame(() => {
+      setIsClient(true);
+    });
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 100);
-    return () => clearTimeout(timer);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
@@ -67,7 +72,7 @@ export default function Home() {
               className="z-50 flex flex-col justify-center items-center px-4 h-full"
             >
               <motion.p
-                className="font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-center text-white py-4 main bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text"
+                className="font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-center text-white py-4 main bg-linear-to-r from-white via-blue-100 to-white bg-clip-text"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -84,7 +89,7 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
-                    className="font-semibold text-2xl sm:text-3xl md:text-4xl secondary text-center bg-gradient-to-r from-blue-200 via-blue-400 to-blue-200 bg-clip-text text-transparent"
+                    className="font-semibold text-2xl sm:text-3xl md:text-4xl secondary text-center bg-linear-to-r from-blue-200 via-blue-400 to-blue-200 bg-clip-text text-transparent"
                   >
                     {taglines[taglineIndex]}
                   </motion.span>

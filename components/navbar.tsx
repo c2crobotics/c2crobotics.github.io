@@ -1,9 +1,9 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect, useRef, useCallback } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { siteConfig } from "@/config/site"
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react"
 
@@ -46,7 +46,6 @@ export default function Navbar() {
       const target = event.target as Node
       let isInsideDropdown = false
 
-      // Check if click is inside any dropdown
       Object.values(dropdownRefs.current).forEach((ref) => {
         if (ref && ref.contains(target)) {
           isInsideDropdown = true
@@ -90,7 +89,7 @@ export default function Navbar() {
 
   const handleMobileMenuToggle = () => {
     setMobileOpen(!mobileOpen)
-    setMobileActiveDropdown(null) // Reset mobile dropdown when toggling menu
+    setMobileActiveDropdown(null)
   }
 
   const handleMobileDropdownToggle = (e: React.MouseEvent, label: string) => {
@@ -117,12 +116,15 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group transition-transform duration-200 hover:scale-105">
               <div className="relative">
-                <img
+                <Image
                   src="/logo.png"
                   alt={siteConfig.name}
+                  width={48}
+                  height={48}
+                  priority
                   className="h-12 w-auto transition-transform duration-200"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-orange-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-linear-to-r from-blue-500/20 to-orange-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="text-white">
                 <div className="font-bold text-3xl leading-none uppercase tracking-wider">
@@ -150,20 +152,18 @@ export default function Navbar() {
                       >
                         <span className="relative z-10">{link.label}</span>
                         <ChevronDown
-                          className={`w-4 h-4 transition-transform duration-200 ${
-                            activeDropdown === link.label ? "rotate-180" : ""
-                          }`}
+                          className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === link.label ? "rotate-180" : ""
+                            }`}
                         />
                         <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                       </Link>
 
                       {/* Desktop Dropdown Panel */}
                       <div
-                        className={`absolute top-full left-0 w-64 transition-all duration-200 ${
-                          activeDropdown === link.label
-                            ? "opacity-100 translate-y-0 pointer-events-auto"
-                            : "opacity-0 translate-y-1 pointer-events-none"
-                        }`}
+                        className={`absolute top-full left-0 w-64 transition-all duration-200 ${activeDropdown === link.label
+                          ? "opacity-100 translate-y-0 pointer-events-auto"
+                          : "opacity-0 translate-y-1 pointer-events-none"
+                          }`}
                         style={{ marginTop: "0px" }}
                       >
                         <div className="h-1 w-full" />
@@ -192,7 +192,6 @@ export default function Navbar() {
                       </div>
                     </div>
                   ) : (
-                    // Desktop Regular Menu Item
                     <Link
                       href={link.href}
                       className="relative px-4 py-2 text-white font-medium tracking-wide transition-all duration-200 hover:text-blue-400 group"
@@ -215,14 +214,12 @@ export default function Navbar() {
             >
               <div className="w-6 h-6 relative">
                 <Menu
-                  className={`absolute inset-0 transition-all duration-300 ${
-                    mobileOpen ? "opacity-0 rotate-180 scale-75" : "opacity-100 rotate-0 scale-100"
-                  }`}
+                  className={`absolute inset-0 transition-all duration-300 ${mobileOpen ? "opacity-0 rotate-180 scale-75" : "opacity-100 rotate-0 scale-100"
+                    }`}
                 />
                 <X
-                  className={`absolute inset-0 transition-all duration-300 ${
-                    mobileOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-180 scale-75"
-                  }`}
+                  className={`absolute inset-0 transition-all duration-300 ${mobileOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-180 scale-75"
+                    }`}
                 />
               </div>
             </button>
@@ -232,9 +229,8 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
-          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
       >
         {/* Backdrop */}
         <div
@@ -245,14 +241,11 @@ export default function Navbar() {
 
         {/* Menu Panel */}
         <div
-          className={`absolute top-0 right-0 h-full w-72 max-w-[85vw] bg-gradient-to-br from-[#1a1a1f] via-[#2a2a35] to-[#1a1a1f] shadow-2xl transform transition-all duration-300 ease-out ${
-            mobileOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`absolute top-0 right-0 h-full w-72 max-w-[85vw] bg-linear-to-br from-[#1a1a1f] via-[#2a2a35] to-[#1a1a1f] shadow-2xl transform transition-all duration-300 ease-out ${mobileOpen ? "translate-x-0" : "translate-x-full"
+            }`}
         >
-          {/* Scrollable Content */}
           <div className="h-full overflow-y-auto overscroll-contain">
             <div className="flex flex-col min-h-full">
-              {/* Navigation Links */}
               <div className="flex-1 px-4 py-6 pt-24">
                 <nav className="space-y-2">
                   {siteConfig.navItems.map((link, index) => (
@@ -260,7 +253,6 @@ export default function Navbar() {
                       {link.dropdown ? (
                         <>
                           <div className="flex items-center rounded-xl overflow-hidden">
-                            {/* Main Link */}
                             <Link
                               href={link.href}
                               className="flex-1 px-4 py-4 text-white font-medium tracking-wide transition-all duration-200 hover:bg-white/10 hover:text-blue-400 active:scale-95"
@@ -268,8 +260,6 @@ export default function Navbar() {
                             >
                               <span className="text-left">{link.label}</span>
                             </Link>
-
-                            {/* Dropdown Toggle Button */}
                             <button
                               className="px-3 py-4 text-white hover:bg-white/10 hover:text-blue-400 transition-all duration-200 active:scale-95"
                               onClick={(e) => handleMobileDropdownToggle(e, link.label)}
@@ -277,18 +267,14 @@ export default function Navbar() {
                               aria-label={`Toggle ${link.label} dropdown`}
                             >
                               <ChevronRight
-                                className={`w-5 h-5 transition-transform duration-300 ${
-                                  mobileActiveDropdown === link.label ? "rotate-90" : ""
-                                }`}
+                                className={`w-5 h-5 transition-transform duration-300 ${mobileActiveDropdown === link.label ? "rotate-90" : ""
+                                  }`}
                               />
                             </button>
                           </div>
-
-                          {/* Mobile Dropdown Items */}
                           <div
-                            className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                              mobileActiveDropdown === link.label ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                            }`}
+                            className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileActiveDropdown === link.label ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                              }`}
                           >
                             <div className="pl-6 pr-2 space-y-1">
                               {link.dropdown.map((item, subIndex) => (
@@ -315,7 +301,6 @@ export default function Navbar() {
                           </div>
                         </>
                       ) : (
-                        // Regular Mobile Menu Item
                         <Link
                           href={link.href}
                           className="block px-4 py-4 text-white font-medium tracking-wide rounded-xl transition-all duration-200 hover:bg-white/10 hover:text-blue-400 hover:translate-x-2 active:scale-95 group"

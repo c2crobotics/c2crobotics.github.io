@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Autoplay from "embla-carousel-autoplay"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
@@ -28,7 +28,9 @@ interface GalleryManifest {
 export default function Gallery() {
   const [selectedAlbum, setSelectedAlbum] = useState("")
   const [carouselApi, setCarouselApi] = useState<EmblaCarouselType | undefined>()
-  const autoplayPlugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }))
+  const autoplayPlugin = useMemo(() => Autoplay({ delay: 2000, stopOnInteraction: true }), [])
+
+  const plugins = useMemo(() => [autoplayPlugin], [autoplayPlugin]);
 
   const [galleryData, setGalleryData] = useState<GalleryManifest | null>(null)
   const [loading, setLoading] = useState(true)
@@ -154,10 +156,10 @@ export default function Gallery() {
           <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-center sm:text-left">Featured Images</h2>
           <div className="max-w-full sm:max-w-2xl mx-auto">
             <Carousel
-              plugins={[autoplayPlugin.current]}
+              plugins={plugins}
               className="mb-2"
-              onMouseEnter={autoplayPlugin.current.stop}
-              onMouseLeave={autoplayPlugin.current.reset}
+              onMouseEnter={autoplayPlugin.stop}
+              onMouseLeave={() => autoplayPlugin.play()}
               setApi={setCarouselApi}
               opts={{ align: "start", loop: true }}
             >
@@ -170,7 +172,7 @@ export default function Gallery() {
                         alt={`Featured gallery image ${index + 1}`}
                         fill
                         className="object-cover rounded-lg shadow-lg"
-                        quality={85}
+                        quality={75}
                         sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 80vw, 672px"
                         priority={index === 0}
                       />
@@ -211,7 +213,7 @@ export default function Gallery() {
         <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
           <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between mb-6">
             <h1 className="text-2xl sm:text-3xl font-semibold text-center sm:text-left">Albums</h1>
-            <div className="w-full sm:w-auto sm:min-w-[280px] sm:max-w-[320px]">
+            <div className="w-full sm:w-auto sm:min-w-70 sm:max-w-[320px]">
               <Select value={selectedAlbum} onValueChange={setSelectedAlbum}>
                 <SelectTrigger className="w-full h-12 text-base sm:text-sm bg-white border-2 hover:border-gray-400 focus:border-blue-500 transition-colors">
                   <SelectValue placeholder="Select an album" />
@@ -248,7 +250,7 @@ export default function Gallery() {
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      quality={80}
+                      quality={75}
                       loading={index < 6 ? "eager" : "lazy"}
                     />
                   </motion.div>
@@ -259,7 +261,7 @@ export default function Gallery() {
             {!selectedAlbum && (
               <motion.div
                 key="empty"
-                className="flex items-center justify-center h-[400px]"
+                className="flex items-center justify-center h-100"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}

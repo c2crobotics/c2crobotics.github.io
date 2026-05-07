@@ -86,14 +86,14 @@ const floatingVariants: Variants = {
 export default function NotFound() {
   return (
     <motion.div
-      className="h-[52rem] w-full overflow-hidden relative flex flex-col items-center justify-center"
+      className="h-208 w-full overflow-hidden relative flex flex-col items-center justify-center"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       {/* Background gradient */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+        className="absolute inset-0 bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}

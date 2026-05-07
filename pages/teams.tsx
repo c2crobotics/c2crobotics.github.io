@@ -80,7 +80,7 @@ export default function Teams() {
                 Since 2019, Coast 2 Coast Robotics has proudly competed in regional, state, and international competitions, including the prestigious international VEX and VEX IQ World Championship, and various coding competitions.
               </p>
               <p>
-                We are devoted to uplifting the next generation of engineers who will grow to exemplify teamwork, creativity, and technical excellence through our organization's mentoring programs.
+                We are devoted to uplifting the next generation of engineers who will grow to exemplify teamwork, creativity, and technical excellence through our organization&apos;s mentoring programs.
               </p>
               <p className="text-gray-700 leading-relaxed">
                 Our dream is to inspire students to pursue careers in STEM through hands-on robotics, real-world programming, and collaborative engineering challenges that build confident engineering skills and the drive to make a bigger impact on the world.

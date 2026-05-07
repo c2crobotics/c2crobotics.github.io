@@ -119,11 +119,10 @@ export default function CoursesSection() {
               <button
                 key={key}
                 onClick={() => setActiveTab(key)}
-                className={`flex items-center justify-center gap-3 px-6 py-2 rounded-lg transition-all duration-200 ${
-                  activeTab === key
-                    ? "bg-blue-600 text-white shadow-lg transform scale-105"
-                    : "bg-white text-gray-600 hover:bg-gray-50 shadow-md"
-                }`}
+                className={`flex items-center justify-center gap-3 px-6 py-2 rounded-lg transition-all duration-200 ${activeTab === key
+                  ? "bg-blue-600 text-white shadow-lg transform scale-105"
+                  : "bg-white text-gray-600 hover:bg-gray-50 shadow-md"
+                  }`}
               >
                 <section.icon className="w-5 h-5" />
                 <div className="text-center">
@@ -155,9 +154,8 @@ export default function CoursesSection() {
                 <div className="flex justify-between items-start gap-3 mb-3">
                   <h3 className="text-xl text-gray-900 flex-1 min-w-0">{course.title}</h3>
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap flex-shrink-0 ${
-                      levelColors[course.level as keyof typeof levelColors]
-                    }`}
+                    className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap shrink-0 ${levelColors[course.level as keyof typeof levelColors]
+                      }`}
                   >
                     {course.level}
                   </span>
@@ -166,7 +164,7 @@ export default function CoursesSection() {
               </div>
 
               {/* Card Content */}
-              <div className="px-6 pb-6 flex flex-col flex-grow">
+              <div className="px-6 pb-6 flex flex-col grow">
                 <div className="space-y-3 mb-4">
                   <div className="flex items-center gap-2 text-sm text-gray-600">
                     <Clock className="w-4 h-4" />
@@ -174,12 +172,12 @@ export default function CoursesSection() {
                   </div>
                 </div>
 
-                <div className="space-y-2 mb-6 flex-grow">
+                <div className="space-y-2 mb-6 grow">
                   <h4 className="font-semibold text-sm text-gray-900">Program highlights:</h4>
                   <ul className="space-y-1">
                     {course.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-sm text-gray-600">
-                        <Star className="w-3 h-3 text-yellow-500 flex-shrink-0" />
+                        <Star className="w-3 h-3 text-yellow-500 shrink-0" />
                         {feature}
                       </li>
                     ))}
