@@ -95,6 +95,21 @@ export default function App({ Component, pageProps }: AppProps) {
                 </Link>
               ))}
             </nav>
+            <div className="text-center text-gray-300 text-2xl underline font-bold mt-6 sm:mt-8 px-2">
+              Locations
+            </div>
+            <div className="grid grid-cols-4">
+              <div></div>
+              <div className="text-center text-white text-sm sm:text-base mt-6 sm:mt-8 px-2">
+                <p className="font-bold">Bayside</p>646-799-3980<br />41-08 Bell Blvd,<br />2nd Floor,<br />Bayside, NY 11361
+                </div>
+              <div className="text-center text-white text-sm sm:text-base mt-6 sm:mt-8 px-2">
+                  <p className="font-bold">Mineola</p>516-899-8886<br />254 E Jericho Turnpike<br />Mineola, NY 11501
+              </div>
+              <div></div>
+            </div> 
+  
+
             <div className="text-center text-gray-400 text-sm sm:text-base mt-6 sm:mt-8 px-2">
               © 2026 Coast 2 Coast Robotics. All rights reserved.
             </div>

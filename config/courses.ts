@@ -358,15 +358,15 @@ export const summerCourses = [
   },
   {
     title: "Weekly Academic Camps",
-    description: "Week-long camps covering academics, languages, and STEAM including robotics, 3D printing, laser cutting, and more.",
+    description: "Week-long camps covering math, English, Chinese, and STEAM including robotics, 3D printing, and more.",
     gradeLevel: "K - 12th Grade",
     dates: "Jun 29 - Aug 28, 2026",
     time: "Mon-Fri 9AM-4PM",
     category: "STEM Camp",
     tags: ["stem", "camp", "3d-printing", "fabrication"],
     imageUrl: "/courses/vex.webp?height=200&width=300",
-    skills: ["3D modeling", "Laser cutting", "Programming", "Research methods"],
-    projects: ["3D printed parts", "Laser printing", "Presentation"],
+    skills: ["English", "Math", "Chinese", "Programming", "3D modeling", "Research methods"],
+    projects: ["Presentations"],
   },
   {
     title: "Weekend Classes - Robotics Foundations",
@@ -378,7 +378,7 @@ export const summerCourses = [
     tags: ["weekend", "engineering", "robotics"],
     imageUrl: "/courses/battlebot.webp?height=200&width=300",
     skills: ["Programming", "Building and Designing", "Teamwork", "Public speaking"],
-    projects: ["Battle bot design", "Control system", "Take-home robot"],
+    projects: ["Robot design", "Control system"],
   },
   // {
   //   title: "Weekend Camps - Mini Battle Bots",

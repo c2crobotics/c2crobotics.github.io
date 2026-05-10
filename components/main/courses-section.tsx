@@ -13,10 +13,10 @@ const courses = {
     description: "Get an immersive, practical experience - where students learn by doing.",
     courses: [
       {
-        title: "RM001 - Robotics for Grades K-5",
+        title: "Summer Academic Camps",
         description:
-          "In this course, students will dive into core engineering principles, 3D design modeling using CAD, programming, and using the VEX IQ system. Students will also have the chance to build their first bot using the knowledge they've gained throughout the course, making this a major stepping stone in their robotics career.",
-        duration: "8 weeks",
+          "Join our week-long camps covering math, English, Chinese, and STEAM including robotics, 3D printing, and more.",
+        duration: "Summer 2026",
         level: "Beginner",
         features: [
           "VEX IQ Robotics Platform",
@@ -26,19 +26,27 @@ const courses = {
         ],
       },
       {
+        title: "SRB001 - Robotics Fundamentals Grades K-8, 6-12",
+        description: "In this course, students will dive into core engineering principles, 3D design modeling using CAD, programming, and using the VEX IQ system. Students will also have the chance to build their first bot using the knowledge they've gained throughout the course, making this a major stepping stone in their robotics career.",
+        duration: "Summer 2026, Saturdays",
+        level: "Beginner",
+        features: ["Engineering Design", "Mechanics", "Building"],
+      }, 
+      {
         title: "CTC001 - Programming for Grades K-5",
         description: "In this course, students will learn important programming fundamentals, numerous vital data types, and the essentials of C++ coding. This course provides detailed necessities of being a coder for your team.",
-        duration: "Jan 6 - Apr 13, 2026",
+        duration: "Fall 2026",
         level: "Beginner",
         features: ["Programming skills", "Data types", "Problem-solving", "C++ basics"],
       },
       {
         title: "3D Modelling and Design",
         description: "In this course, students will be given the opportunity to learn 3D modeling using CAD software such as Onshape, additive/negative manufacting, and numerous key design principles that can be used in robots and hundreds of other engineering fields. This course will equip the student with the proper knowledge and resources to become a professional designer.",
-        duration: "Jan 6 - Apr 13, 2026",
+        duration: "Fall 2026",
         level: "Beginner",
         features: ["CAD design", "Design principles", "3d printing", "Problem-solving"],
       },
+ 
     ],
   },
   create: {
@@ -71,14 +79,14 @@ const courses = {
         title: "VEX V5 Competition Bootcamp",
         description:
           "Join our 8-week long summer bootcamp to learn the ins-and-outs of being on a V5 competition team. Teams will learn about teamwork, public speaking, building, designing, mechanics, programming, and more.",
-        duration: "June 29, 2026 - August 21, 2026",
+        duration: "Summer 2026, June 29 - August 28",
         level: "Advanced",
         features: ["Tournament preparation", "Strategy development", "Team leadership", "Award pursuit"],
       },
       {
         title: "VEX IQ Competition Bootcamp",
         description: "Join our 8-week long summer bootcamp to learn the ins-and-outs of being on a VEX IQ competition team. Teams will learn about teamwork, public speaking, building, designing, mechanics, programming, and more.",
-        duration: "June 29, 2026 - August 21, 2026",
+        duration: "Summer 2026, June 29 - August 28",
         level: "Intermediate",
         features: ["Tournament preparation", "Strategy development", "Team leadership", "Award pursuit"],
       },

@@ -32,7 +32,35 @@ export default function ContactPage() {
         </div>
       </motion.div>
 
-      <div className="flex items-center justify-center p-2 sm:p-4">
+
+      
+      <div className="text-center text-black text-4xl underline font-bold mt-6 sm:mt-8 px-2">
+        Add Us on WeChat
+      </div>
+      <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="relative"
+              style={{
+                display: 'flex',
+                justifyContent: 'center', // Centers horizontally
+                alignItems: 'center',     // Centers vertically
+                height: '800px'           // Container needs a height to center vertically
+              }}
+            >
+            <div className="rounded-2xl overflow-hidden">
+                <img
+                  className="w-150 h-200 object-cover"
+                  src="/scanWeChat.avif?height=100&width=100"
+                  alt="Coast 2 Coast Robotics team"
+                />
+            </div>
+      </motion.div>
+
+
+      <div className="flex items-center justify-center p-2 sm:p-4"> 
         <div className="w-full max-w-4xl">
           <Card className="shadow-lg mt-4 sm:mt-8 mx-2 sm:mx-0">
             <CardContent className="p-3 sm:p-6 bg-blue-50">

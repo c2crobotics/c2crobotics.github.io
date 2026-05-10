@@ -17,7 +17,7 @@ const images = [
   "/Worlds2026_April27_JHO [IMG_1055].webp",
 ];
 
-const taglines = ["Turning dreams into reality", "Robotics Redefined"]
+const taglines = ["Turning Dreams into Reality", "Robotics Redefined"]
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
