@@ -522,18 +522,19 @@ export default function CoursesPage() {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <TabsList className="grid w-full grid-cols-4 mb-4">
-              <TabsTrigger value="jan-april" className="text-xs">
-                Jan-April
-              </TabsTrigger>
-              <TabsTrigger value="holiday" className="text-xs">
-                Holiday
-              </TabsTrigger>
               <TabsTrigger value="summer" className="text-xs">
                 Summer
               </TabsTrigger>
               <TabsTrigger value="fall" className="text-xs">
-                Fall
+                Fall (Sept - Dec)
               </TabsTrigger>
+              <TabsTrigger value="jan-april" className="text-xs" >
+                Winter (Jan - Mar)
+              </TabsTrigger>
+              <TabsTrigger value="holiday" className="text-xs">
+                Holiday
+              </TabsTrigger>
+              
             </TabsList>
           </motion.div>
 

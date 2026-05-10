@@ -9,11 +9,12 @@ import CoursesSection from "@/components/main/courses-section"
 import { ChevronDown } from "lucide-react"
 
 const images = [
-  "/2023mall.webp",
-  "/2022snyvex.webp",
-  "/2022snyvrchigh.webp",
-  "/2022snyvrc.webp",
-  "/2022wpi.webp",
+  "/Worlds2026_April23_JHO [IMG_9757]_horizontal.webp",
+  "/States2026_March14_JHO [IMG_6709].webp",
+  "/States2026_March14_JHO [IMG_6756].webp",
+  "/Worlds2026_April23_JHO [IMG_9085].webp",
+  "/Worlds2026_April26_JHO [IMG_0563].webp",
+  "/Worlds2026_April27_JHO [IMG_1055].webp",
 ];
 
 const taglines = ["Turning dreams into reality", "Robotics Redefined"]

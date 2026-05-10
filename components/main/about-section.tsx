@@ -1,13 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { Users, Award, Lightbulb, Target } from "lucide-react"
 import { AnimatedCounter } from "../animated-counter"
-import Image from "next/image"
 
 const stats = [
-  { icon: Users, label: "Students Trained", value: 450, suffix: "+" },
+  { icon: Users, label: "Students Trained", value: 600, suffix: "+" },
   { icon: Award, label: "Competitions Won", value: 60, suffix: "+" },
-  { icon: Lightbulb, label: "Projects Completed", value: 50, suffix: "+" },
-  { icon: Target, label: "Years of Excellence", value: 10, suffix: "+" },
+  { icon: Lightbulb, label: "Projects Completed", value: 70, suffix: "+" },
+  { icon: Target, label: "Years of Excellence", value: 15, suffix: "+" },
 ]
 
 export default function AboutSection() {
@@ -23,18 +22,14 @@ export default function AboutSection() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                About Coast 2 Coast Robotics
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">About Coast 2 Coast Robotics</h2>
               <p className="text-lg text-gray-600 mb-6">
-                We are a robotics education organization dedicated to inspiring the next generation
-                of engineers, programmers, and innovators. We offer numerous of STEM programs along
-                with mentorship designed for students grades K-12.
+                We are a robotics education organization dedicated to inspiring the next generation of engineers,
+                programmers, and innovators. We offer numerous of STEM programs along with mentorship designed for students grades K-12.
               </p>
               <p className="text-lg text-gray-600 mb-8">
-                From begininners taking their first steps into robotics to veterans competing at the
-                highest levels, we provide the tools, mentorship, and opportunities needed to
-                succeed in STEM fields.
+                From begininners taking their first steps into robotics to veterans competing at the highest levels, we
+                provide the tools, mentorship, and opportunities needed to succeed in STEM fields.
               </p>
 
               {/* Stats Grid */}
@@ -50,11 +45,7 @@ export default function AboutSection() {
                   >
                     <stat.icon className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                     <div className="text-2xl font-bold text-gray-900">
-                      <AnimatedCounter
-                        end={stat.value}
-                        duration={1500 + index * 200}
-                        suffix={stat.suffix}
-                      />
+                      <AnimatedCounter end={stat.value} duration={1500 + index * 200} suffix={stat.suffix} />
                     </div>
                     <div className="text-sm text-gray-600">{stat.label}</div>
                   </motion.div>
@@ -70,15 +61,11 @@ export default function AboutSection() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-square rounded-2xl overflow-hidden relative">
-                <Image
-                  src="/logo.png"
+              <div className="aspect-square rounded-2xl overflow-hidden">
+                <img
+                  src="/logo.png?height=500&width=500"
                   alt="Coast 2 Coast Robotics team"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                  quality={75}
+                  className="w-full h-full object-cover"
                 />
               </div>
             </motion.div>

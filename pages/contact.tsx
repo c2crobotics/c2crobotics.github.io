@@ -1,108 +1,57 @@
 "use client"
 
-import { motion, type Variants } from "framer-motion"
-import ContactForm from "@/components/contact-form"
-import ContactInfo from "@/components/contact-info"
-import { Toaster } from "@/components/ui/toaster"
-import { Suspense } from "react"
+import { Card, CardContent } from "@/components/ui/card"
+import { motion } from "framer-motion"
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-}
-
-const formVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.7,
-      ease: "easeOut",
-      delay: 0.2,
-    },
-  },
-}
-
-const infoVariants: Variants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-      delay: 0.4,
-    },
-  },
-}
-
-export default function Contact() {
+export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <motion.div
-        className="bg-[#1a1a1f] text-primary-foreground py-6 w-full"
+        className="bg-[#1a1a1f] text-primary-foreground py-4 sm:py-6 w-full"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="text-center">
+        <div className="text-center px-4">
           <motion.h1
-            className="text-2xl font-bold text-center mb-2"
+            className="text-xl sm:text-2xl font-bold text-white mb-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Contact Us
+            Get In Touch
           </motion.h1>
           <motion.p
-            className="text-sm text-center opacity-90 max-w-2xl mx-auto"
+            className="text-xs sm:text-sm text-center opacity-90 max-w-2xl mx-auto px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            We&apos;d love to hear from you. Fill out the form below and we&apos;ll get back to you as soon as possible.
+            Give us a call or send us a message.
           </motion.p>
         </div>
       </motion.div>
 
-      <Suspense fallback={<div>Loading...</div>}>
-        <motion.main
-          className="container mx-auto py-12 px-4 md:px-6 max-w-6xl"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="max-w-2xl mx-auto">
-            <motion.div variants={formVariants}>
-              <ContactForm />
-            </motion.div>
-            <Toaster />
-          </div>
-          <motion.div variants={infoVariants}>
-            <ContactInfo />
-          </motion.div>
-        </motion.main>
-      </Suspense>
+      <div className="flex items-center justify-center p-2 sm:p-4">
+        <div className="w-full max-w-4xl">
+          <Card className="shadow-lg mt-4 sm:mt-8 mx-2 sm:mx-0">
+            <CardContent className="p-3 sm:p-6 bg-blue-50">
+              {/* Google Form Embed Area */}
+              <div className="w-full overflow-hidden rounded-lg">
+                <iframe
+                  src="https://tally.so/r/GxXJyo?transparentBackground=1"
+                  width="100%"
+                  height="600"
+                  className="rounded-lg sm:h-200 h-150 border-0"
+                  title="Get In Touch"
+                >
+                  Loading…
+                </iframe>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </div>
   )
 }

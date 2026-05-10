@@ -91,20 +91,20 @@ export const navItemsData = [
     href: "/courses",
     color: "foreground" as Color,
     dropdown: [
+      // {
+      //   label: "Winter Courses",
+      //   href: "/courses",
+      //   tabId: "jan-april",
+      //   description: "January - March programs",
+      // },
+      // {
+      //   label: "Holiday Courses",
+      //   href: "/courses",
+      //   tabId: "holiday",
+      //   description: "April - June programs",
+      // },
       {
-        label: "Winter Courses",
-        href: "/courses",
-        tabId: "jan-april",
-        description: "January - March programs",
-      },
-      {
-        label: "Holiday Courses",
-        href: "/courses",
-        tabId: "holiday",
-        description: "April - June programs",
-      },
-      {
-        label: "Summer Courses",
+        label: "Summer Camps",
         href: "/courses",
         tabId: "summer",
         description: "July - August programs",
