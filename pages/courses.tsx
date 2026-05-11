@@ -453,7 +453,7 @@ export default function CoursesPage() {
   // Derive active tab directly from URL – no state, no effect
   const activeTab = useMemo(() => {
     const tab = searchParams.get("tab")
-    return tab && ["jan-april", "summer", "fall", "holiday"].includes(tab) ? tab : "jan-april"
+    return tab && ["jan-april", "summer", "fall", "holiday"].includes(tab) ? tab : "summer"
   }, [searchParams])
 
   // Update URL when user selects a tab – only side effect is router.replace
@@ -534,7 +534,7 @@ export default function CoursesPage() {
               <TabsTrigger value="holiday" className="text-xs">
                 Holiday
               </TabsTrigger>
-              
+
             </TabsList>
           </motion.div>
 
@@ -546,7 +546,7 @@ export default function CoursesPage() {
               </motion.div>
 
               <ClassDatesCard config={janAprilConfig.classDates} />
-              <ScheduleImage category="jan-april" />
+              {/* <ScheduleImage category="jan-april" /> */}
               <FilterTags courses={janAprilCourses} selectedTags={janAprilTags} onTagChange={setJanAprilTags} />
 
               <motion.div
@@ -588,7 +588,7 @@ export default function CoursesPage() {
               </motion.div>
 
               <ClassDatesCard config={fallConfig.classDates} />
-              <ScheduleImage category="fall" />
+              {/* <ScheduleImage category="fall" /> */}
               <FilterTags courses={fallCourses} selectedTags={fallTags} onTagChange={setFallTags} />
 
               <motion.div

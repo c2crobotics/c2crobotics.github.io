@@ -95,20 +95,44 @@ export default function App({ Component, pageProps }: AppProps) {
                 </Link>
               ))}
             </nav>
-            <div className="text-center text-gray-300 text-2xl underline font-bold mt-6 sm:mt-8 px-2">
-              Locations
-            </div>
-            <div className="grid grid-cols-4">
-              <div></div>
-              <div className="text-center text-white text-sm sm:text-base mt-6 sm:mt-8 px-2">
-                <p className="font-bold">Bayside</p>646-799-3980<br />41-08 Bell Blvd,<br />2nd Floor,<br />Bayside, NY 11361
+
+            {/* Locations Section */}
+            <div className="max-w-3xl mx-auto mt-8 sm:mt-10">
+              <h3 className="text-center text-gray-300 text-lg sm:text-xl font-semibold tracking-wide mb-6">
+                Our Locations
+              </h3>
+              <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-12">
+                <div className="flex items-start gap-3 text-gray-300">
+                  <div className="mt-1 text-[#50a1ff]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </div>
+                  <div className="text-sm sm:text-base">
+                    <p className="font-semibold text-white mb-1">Bayside</p>
+                    <p className="text-gray-400">41-08 Bell Blvd, 2nd Floor</p>
+                    <p className="text-gray-400">Bayside, NY 11361</p>
+                    <p className="text-[#50a1ff] mt-1">646-799-3980</p>
+                  </div>
                 </div>
-              <div className="text-center text-white text-sm sm:text-base mt-6 sm:mt-8 px-2">
-                  <p className="font-bold">Mineola</p>516-899-8886<br />254 E Jericho Turnpike<br />Mineola, NY 11501
+                <div className="flex items-start gap-3 text-gray-300">
+                  <div className="mt-1 text-[#50a1ff]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </div>
+                  <div className="text-sm sm:text-base">
+                    <p className="font-semibold text-white mb-1">Mineola</p>
+                    <p className="text-gray-400">254 E Jericho Turnpike</p>
+                    <p className="text-gray-400">Mineola, NY 11501</p>
+                    <p className="text-[#50a1ff] mt-1">516-899-8886</p>
+                  </div>
+                </div>
               </div>
-              <div></div>
-            </div> 
-  
+            </div>
+
 
             <div className="text-center text-gray-400 text-sm sm:text-base mt-6 sm:mt-8 px-2">
               © 2026 Coast 2 Coast Robotics. All rights reserved.

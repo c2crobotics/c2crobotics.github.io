@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { Users, Award, Lightbulb, Target } from "lucide-react"
 import { AnimatedCounter } from "../animated-counter"
+import Image from "next/image"
 
 const stats = [
   { icon: Users, label: "Students Trained", value: 600, suffix: "+" },
@@ -61,11 +62,15 @@ export default function AboutSection() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-square rounded-2xl overflow-hidden">
-                <img
-                  src="/logo.png?height=500&width=500"
+              <div className="aspect-square rounded-2xl overflow-hidden relative">
+                <Image
+                  src="/logo.png"
                   alt="Coast 2 Coast Robotics team"
-                  className="w-full h-full object-cover"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                  quality={75}
                 />
               </div>
             </motion.div>

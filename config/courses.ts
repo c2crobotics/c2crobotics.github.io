@@ -8,13 +8,13 @@ export const siteConfig = {
       height: 700,
       width: 1300,
       alt: "Winter Course Schedule Overview",
-      //src: "/gallery/schedule/winter2025.avif"
+      src: ""
     },
     holiday: {
       height: 700,
       width: 1300,
       alt: "Holiday Camp Schedule Overview",
-      //src: "/gallery/placeholder.webp"
+      src: ""
     },
     fall: {
       height: 700,
@@ -62,11 +62,11 @@ export const holidayConfig = {
 }
 
 export const fallConfig = {
-  title: "2025 Fall Classes",
+  title: "2026 Fall Classes",
   description:
     "Weekly robotics classes with 10 sessions per class. Introductory VEX IQ and VEX robotics courses for different grade levels.",
   classDates: {
-    title: "Fall 2025 Class Dates:",
+    title: "Fall 2026 Class Dates:",
     schedule: {
       Tuesday: "Sep 9, 16, 23, 30 / Oct 7, 14, 21, 28 / Nov 4, 18",
       Thursday: "Sep 11, 18, 25 / Oct 2, 9, 16, 23, 30 / Nov 6, 13, 20",

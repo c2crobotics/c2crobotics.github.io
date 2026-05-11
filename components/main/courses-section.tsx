@@ -31,7 +31,7 @@ const courses = {
         duration: "Summer 2026, Saturdays",
         level: "Beginner",
         features: ["Engineering Design", "Mechanics", "Building"],
-      }, 
+      },
       {
         title: "CTC001 - Programming for Grades K-5",
         description: "In this course, students will learn important programming fundamentals, numerous vital data types, and the essentials of C++ coding. This course provides detailed necessities of being a coder for your team.",
@@ -39,14 +39,14 @@ const courses = {
         level: "Beginner",
         features: ["Programming skills", "Data types", "Problem-solving", "C++ basics"],
       },
-      {
-        title: "3D Modelling and Design",
-        description: "In this course, students will be given the opportunity to learn 3D modeling using CAD software such as Onshape, additive/negative manufacting, and numerous key design principles that can be used in robots and hundreds of other engineering fields. This course will equip the student with the proper knowledge and resources to become a professional designer.",
-        duration: "Fall 2026",
-        level: "Beginner",
-        features: ["CAD design", "Design principles", "3d printing", "Problem-solving"],
-      },
- 
+      // {
+      //   title: "3D Modelling and Design",
+      //   description: "In this course, students will be given the opportunity to learn 3D modeling using CAD software such as Onshape, additive/negative manufacting, and numerous key design principles that can be used in robots and hundreds of other engineering fields. This course will equip the student with the proper knowledge and resources to become a professional designer.",
+      //   duration: "Fall 2026",
+      //   level: "Beginner",
+      //   features: ["CAD design", "Design principles", "3d printing", "Problem-solving"],
+      // },
+
     ],
   },
   create: {
@@ -54,19 +54,26 @@ const courses = {
     title: "Create",
     description: "Using various design and development processes, develop and create your ideas.",
     courses: [
+      // {
+      //   title: "RV001 - Robotics for Grades 6-12",
+      //   description: "Continue your robotics journey using the VEX robotics ecosystem, covering gear ratios, torque, speed, and other mechanical concepts.",
+      //   duration: "Jan 6 - Apr 13, 2026",
+      //   level: "Intermediate",
+      //   features: ["VEX ecosystem", "Gear ratios", "Programming", "Design and modeling"],
+      // },
+      // {
+      //   title: "CPP002 - Programming for Grades 6-12",
+      //   description: "Advanced programming with complex data types, loops, and I/O operations.",
+      //   duration: "Jan 6 - Apr 13, 2026",
+      //   level: "Intermediate",
+      //   features: ["Basic algorithms", "I/O operations", "Code validation"],
+      // },
       {
-        title: "RV001 - Robotics for Grades 6-12",
-        description: "Continue your robotics journey using the VEX robotics ecosystem, covering gear ratios, torque, speed, and other mechanical concepts.",
-        duration: "Jan 6 - Apr 13, 2026",
-        level: "Intermediate",
-        features: ["VEX ecosystem", "Gear ratios", "Programming", "Design and modeling"],
-      },
-      {
-        title: "CPP002 - Programming for Grades 6-12",
-        description: "Advanced programming with complex data types, loops, and I/O operations.",
-        duration: "Jan 6 - Apr 13, 2026",
-        level: "Intermediate",
-        features: ["Basic algorithms", "I/O operations", "Code validation"],
+        title: "3D Modelling and Design",
+        description: "In this course, students will be given the opportunity to learn 3D modeling using CAD software such as Onshape, additive/negative manufacting, and numerous key design principles that can be used in robots and hundreds of other engineering fields. This course will equip the student with the proper knowledge and resources to become a professional designer.",
+        duration: "Fall 2026",
+        level: "Beginner",
+        features: ["CAD design", "Design principles", "3d printing", "Problem-solving"],
       },
     ],
   },
