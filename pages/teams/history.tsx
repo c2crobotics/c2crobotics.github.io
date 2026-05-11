@@ -363,8 +363,8 @@ export default function History() {
                       variants={itemVariants}
                       onClick={() => handleTeamSelect(team.number)}
                       className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-300 ease-out font-bold uppercase tracking-wide hover:scale-[1.02] ${effectiveTeam?.number === team.number
-                          ? "bg-blue-600 text-white shadow-lg"
-                          : "text-gray-600 hover:bg-gray-50 hover:shadow-md"
+                        ? "bg-blue-600 text-white shadow-lg"
+                        : "text-gray-600 hover:bg-gray-50 hover:shadow-md"
                         }`}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
@@ -386,8 +386,8 @@ export default function History() {
                     variants={itemVariants}
                     onClick={() => handleYearSelect(year)}
                     className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ease-out font-bold uppercase tracking-wide hover:scale-[1.02] ${effectiveYear === year
-                        ? "bg-[#1a1a1f] text-white shadow-lg"
-                        : "text-gray-700 hover:bg-gray-100 hover:shadow-md"
+                      ? "bg-[#1a1a1f] text-white shadow-lg"
+                      : "text-gray-700 hover:bg-gray-100 hover:shadow-md"
                       }`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -443,8 +443,8 @@ export default function History() {
                             key={team.number}
                             onClick={() => handleTeamSelect(team.number)}
                             className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-300 ease-out font-bold uppercase tracking-wide ${effectiveTeam?.number === team.number
-                                ? "bg-blue-600 text-white shadow-lg"
-                                : "text-gray-600 hover:bg-gray-50 hover:shadow-md"
+                              ? "bg-blue-600 text-white shadow-lg"
+                              : "text-gray-600 hover:bg-gray-50 hover:shadow-md"
                               }`}
                           >
                             <span className="wrap-break-words">{team.number}</span>
@@ -461,8 +461,8 @@ export default function History() {
                           key={year}
                           onClick={() => handleYearSelect(year)}
                           className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ease-out font-bold uppercase tracking-wide ${effectiveYear === year
-                              ? "bg-[#1a1a1f] text-white shadow-lg"
-                              : "text-gray-700 hover:bg-gray-100 hover:shadow-md"
+                            ? "bg-[#1a1a1f] text-white shadow-lg"
+                            : "text-gray-700 hover:bg-gray-100 hover:shadow-md"
                             }`}
                         >
                           {year}

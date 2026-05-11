@@ -6,6 +6,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { siteConfig } from "@/config/site"
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react"
+import { usePathname, useSearchParams } from "next/navigation"
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -13,6 +14,31 @@ export default function Navbar() {
   const [mobileActiveDropdown, setMobileActiveDropdown] = useState<string | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const isHome = pathname === "/"
+
+  // Build the current full relative URL (pathname + query string)
+  const currentHref = pathname + (searchParams.toString() ? "?" + searchParams.toString() : "")
+
+  // Scroll-to-top handler when clicking a link that leads to the current page
+  const handleSmoothScroll = (
+    e: React.MouseEvent,
+    href: string,
+    ignoreQuery = false
+  ) => {
+    if (!href.startsWith("/")) return
+
+    const linkPath = href.split("?")[0]
+    const isSamePage = ignoreQuery
+      ? linkPath === pathname
+      : href === currentHref
+
+    if (isSamePage) {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+  }
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -114,7 +140,11 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group transition-transform duration-200 hover:scale-105">
+            <Link
+              href="/"
+              onClick={(e) => handleSmoothScroll(e, "/")}
+              className="flex items-center gap-3 group transition-transform duration-200 hover:scale-105"
+            >
               <div className="relative">
                 <Image
                   src="/logo.png"
@@ -148,6 +178,7 @@ export default function Navbar() {
                     >
                       <Link
                         href={link.href}
+                        onClick={(e) => handleSmoothScroll(e, link.href, link.label === "Classes & Camps")}
                         className="flex items-center gap-1 px-4 py-2 text-white font-medium tracking-wide transition-all duration-200 hover:text-blue-400 group"
                       >
                         <span className="relative z-10">{link.label}</span>
@@ -169,24 +200,27 @@ export default function Navbar() {
                         <div className="h-1 w-full" />
                         <div className="bg-[#2a2a35] rounded-xl shadow-2xl border border-white/10 overflow-hidden">
                           <div className="py-2">
-                            {link.dropdown.map((item) => (
-                              <Link
-                                key={`${link.label}-${item.label}`}
-                                href={
-                                  link.label === "Classes & Camps"
-                                    ? `/courses?tab=${item.tabId || item.href.split("/").pop()}`
-                                    : item.href
-                                }
-                                className="block px-4 py-3 text-white hover:bg-white/10 hover:text-blue-400 transition-all duration-200 group/item"
-                              >
-                                <div className="font-medium">{item.label}</div>
-                                {item.description && (
-                                  <div className="text-sm text-gray-400 mt-1 group-hover/item:text-gray-300">
-                                    {item.description}
-                                  </div>
-                                )}
-                              </Link>
-                            ))}
+                            {link.dropdown.map((item) => {
+                              const itemHref =
+                                link.label === "Classes & Camps"
+                                  ? `/courses?tab=${item.tabId || item.href.split("/").pop()}`
+                                  : item.href
+                              return (
+                                <Link
+                                  key={`${link.label}-${item.label}`}
+                                  href={itemHref}
+                                  onClick={(e) => handleSmoothScroll(e, itemHref)} // exact match for dropdown items
+                                  className="block px-4 py-3 text-white hover:bg-white/10 hover:text-blue-400 transition-all duration-200 group/item"
+                                >
+                                  <div className="font-medium">{item.label}</div>
+                                  {item.description && (
+                                    <div className="text-sm text-gray-400 mt-1 group-hover/item:text-gray-300">
+                                      {item.description}
+                                    </div>
+                                  )}
+                                </Link>
+                              )
+                            })}
                           </div>
                         </div>
                       </div>
@@ -194,6 +228,7 @@ export default function Navbar() {
                   ) : (
                     <Link
                       href={link.href}
+                      onClick={(e) => handleSmoothScroll(e, link.href)}
                       className="relative px-4 py-2 text-white font-medium tracking-wide transition-all duration-200 hover:text-blue-400 group"
                     >
                       <span className="relative z-10">{link.label}</span>
@@ -255,8 +290,11 @@ export default function Navbar() {
                           <div className="flex items-center rounded-xl overflow-hidden">
                             <Link
                               href={link.href}
+                              onClick={(e) => {
+                                handleSmoothScroll(e, link.href, link.label === "Classes & Camps")
+                                if (e.defaultPrevented) handleMobileLinkClick()
+                              }}
                               className="flex-1 px-4 py-4 text-white font-medium tracking-wide transition-all duration-200 hover:bg-white/10 hover:text-blue-400 active:scale-95"
-                              onClick={handleMobileLinkClick}
                             >
                               <span className="text-left">{link.label}</span>
                             </Link>
@@ -277,34 +315,42 @@ export default function Navbar() {
                               }`}
                           >
                             <div className="pl-6 pr-2 space-y-1">
-                              {link.dropdown.map((item, subIndex) => (
-                                <Link
-                                  key={`${link.label}-${item.label}`}
-                                  href={
-                                    link.label === "Classes & Camps"
-                                      ? `/courses?tab=${item.tabId || item.href.split("/").pop()}`
-                                      : item.href
-                                  }
-                                  className="block px-4 py-3 text-gray-300 hover:text-blue-400 hover:bg-white/5 rounded-lg transition-all duration-200 active:scale-95"
-                                  onClick={handleMobileLinkClick}
-                                  style={{
-                                    animationDelay: mobileActiveDropdown === link.label ? `${subIndex * 50}ms` : "0ms",
-                                  }}
-                                >
-                                  <div className="font-medium text-sm">{item.label}</div>
-                                  {item.description && (
-                                    <div className="text-xs text-gray-500 mt-1 leading-relaxed">{item.description}</div>
-                                  )}
-                                </Link>
-                              ))}
+                              {link.dropdown.map((item, subIndex) => {
+                                const itemHref =
+                                  link.label === "Classes & Camps"
+                                    ? `/courses?tab=${item.tabId || item.href.split("/").pop()}`
+                                    : item.href
+                                return (
+                                  <Link
+                                    key={`${link.label}-${item.label}`}
+                                    href={itemHref}
+                                    onClick={(e) => {
+                                      handleSmoothScroll(e, itemHref) // exact match for dropdown items
+                                      if (e.defaultPrevented) handleMobileLinkClick()
+                                    }}
+                                    className="block px-4 py-3 text-gray-300 hover:text-blue-400 hover:bg-white/5 rounded-lg transition-all duration-200 active:scale-95"
+                                    style={{
+                                      animationDelay: mobileActiveDropdown === link.label ? `${subIndex * 50}ms` : "0ms",
+                                    }}
+                                  >
+                                    <div className="font-medium text-sm">{item.label}</div>
+                                    {item.description && (
+                                      <div className="text-xs text-gray-500 mt-1 leading-relaxed">{item.description}</div>
+                                    )}
+                                  </Link>
+                                )
+                              })}
                             </div>
                           </div>
                         </>
                       ) : (
                         <Link
                           href={link.href}
+                          onClick={(e) => {
+                            handleSmoothScroll(e, link.href)
+                            if (e.defaultPrevented) handleMobileLinkClick()
+                          }}
                           className="block px-4 py-4 text-white font-medium tracking-wide rounded-xl transition-all duration-200 hover:bg-white/10 hover:text-blue-400 hover:translate-x-2 active:scale-95 group"
-                          onClick={handleMobileLinkClick}
                           style={{
                             animationDelay: mobileOpen ? `${index * 100}ms` : "0ms",
                           }}

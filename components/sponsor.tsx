@@ -32,7 +32,8 @@ export default function Sponsors() {
     <motion.div
       className="bg-gray-50"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.8 }}
     >
       <h1 className="text-4xl font-bold text-[#1a1a1f] mb-6 text-center">
@@ -42,7 +43,8 @@ export default function Sponsors() {
         className="flex flex-wrap justify-center gap-6"
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
       >
         {siteConfig.sponsors.map((sponsor, index) => (
           <motion.div
