@@ -39,7 +39,7 @@ export default function RegisterPage() {
               {/* Google Form Embed Area */}
               <div className="w-full overflow-hidden rounded-lg">
                 <iframe
-                  src="https://docs.google.com/forms/d/e/1FAIpQLSe1KG4qFC7P95dGq7nSQPSssHHAz8lIb2yoUChzLM9ZRV4rQw/viewform?embedded=true"
+                  src="https://tally.so/embed/Xx1B4j?alignLeft=1&transparentBackground=1&dynamicHeight=1"
                   width="100%"
                   height="600"
                   className="rounded-lg sm:h-200 h-150 border-0"
