@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, type Variants } from "framer-motion"
-import ContactForm from "@/components/contact-form"
+// import ContactForm from "@/components/contact-form"
 import ContactInfo from "@/components/contact-info"
 import { Toaster } from "@/components/ui/toaster"
 import { Suspense } from "react"
@@ -94,7 +94,7 @@ export default function Contact() {
         >
           <div className="max-w-2xl mx-auto">
             <motion.div variants={formVariants}>
-              <ContactForm />
+              {/* <ContactForm /> */}
             </motion.div>
             <Toaster />
           </div>

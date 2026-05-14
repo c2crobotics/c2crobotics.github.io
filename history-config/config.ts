@@ -11,7 +11,7 @@ export const ROBOTEVENTS_CONFIG = {
   ORGANIZATION: "Coast 2 Coast Robotics",
 
   // API Base URL
-  BASE_URL: "https://www.robotevents.com/api/v2",
+  BASE_URL: "https://events.vex.com/api/v2",
 }
 
 export const validateConfig = (): { isValid: boolean; error?: string } => {

@@ -111,7 +111,8 @@ export class RobotEventsAnalyzer {
     }
 
     const teams = await this.getAllPagesOptimized<Team>("/teams", {
-      number: teamNumber,
+      "number[]": teamNumber,   // was: number: teamNumber
+      myTeams: "true",
     })
 
     if (teams.length === 0) {
@@ -269,7 +270,7 @@ export class RobotEventsAnalyzer {
             eventName: award.event?.name || "Unknown Event",
             sortDate: event?.start || "",
             eventUrl: event?.sku && event?.program?.name
-              ? `https://www.robotevents.com/robot-competitions/${event.program.name.toLowerCase().replace(/\s+/g, '-')}/${event.sku}.html#awards`
+              ? `https://events.vex.com/robot-competitions/${event.program.name.toLowerCase().replace(/\s+/g, '-')}/${event.sku}.html#awards`
               : "#",
           }
         })
@@ -281,7 +282,7 @@ export class RobotEventsAnalyzer {
           level: event.level || "Unknown Level",
           sortDate: event.start || "",
           eventUrl: event.sku && event.program?.name
-            ? `https://www.robotevents.com/robot-competitions/${event.program.name.toLowerCase().replace(/\s+/g, '-')}/${event.sku}.html#general-info`
+            ? `https://events.vex.com/robot-competitions/${event.program.name.toLowerCase().replace(/\s+/g, '-')}/${event.sku}.html#general-info`
             : "#",
         }))
 
@@ -305,3 +306,5 @@ export class RobotEventsAnalyzer {
     }
   }
 }
+
+// curl.exe - H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMDA3OTYyZWRkZjQyMjhjZGI2NGU0MWM3OWM4NThhMDE0M2E4MjhkZWM2N2RmZGFiMjlkM2M0MTc4ZmEwNDZiMWZjNDc5YzdkZTRiNzFiZTUiLCJpYXQiOjE3NzUyMzY1MjUuMzc5NzUsIm5iZiI6MTc3NTIzNjUyNS4zNzk3NTE5LCJleHAiOjI3MjIwMDc3MjUuMzczMDU4OCwic3ViIjoiNDU0NzIiLCJzY29wZXMiOltdfQ.UNpz8ocsejxt-lB6GOi2XeqjqVZ2ikjbOCKRBFVsfLplarAnVo-4ImzaYKuwl2jLJuMrB_RFM3L1ZcMPxRaMKk8bG_bOP0Xq95KFrsn5-Xc2M4oj7_xVqyt5KZkzhO_CVNJMkYMqeZv9PRz-GsfekuvyBqjjsfslSRj4PsnBZQg4kX0XfUgHjtKlPxvtoelfB7q7TW0aWuAtcvNdtvYau7SzP3pbtXGIB4CpaCX2qbG8JYZG8ezyDg2fWITfPErtyWyPUkFKtLm_Dz08UtSAfUVgIw5lRbYcTNDRVXdbgDvinrjYcnizgfxdURbQ8_6RH17fcRXet7omnxkM1W3hmMdvS_Cd7_bThcYu1rBX-W6TJSSLEt6S7oldueYWQ_pNM_NfgvbgLr6SU6IPhssaJ1uGOIzGeBFr1OghtNZI9k4f-JbEJSvYVibaxf6xDXr8P8z5lqHCLu1JHnm-PeSFv5KiLb_6u73j9fQYW8NdE4la1Z16Qn_D0DvbtYIXfi9Ekc8FwhJRshirianYVz49jjldV_J6UVpOimPlH53siMcym6QQC0chNUVQw5mRNBcldLJQPItgNapf83JrfJb2nGCxUmnO1gygobph7x_bFGPieYZ0u_adSCFKPPi-thKu5RWE7MiBCWpe97g6KqcVJUPieZDk7QD79em8sN8Ep08" "https://events.vex.com/api/v2/teams?number[]=OOPS&myTeams=true" 
