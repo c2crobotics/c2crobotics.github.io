@@ -16,12 +16,10 @@ export default function Navbar() {
   const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const isHome = pathname === "/"
 
-  // Build the current full relative URL (pathname + query string)
+  // Build the current URL
   const currentHref = pathname + (searchParams.toString() ? "?" + searchParams.toString() : "")
 
-  // Scroll-to-top handler when clicking a link that leads to the current page
   const handleSmoothScroll = (
     e: React.MouseEvent,
     href: string,
@@ -292,7 +290,7 @@ export default function Navbar() {
                               href={link.href}
                               onClick={(e) => {
                                 handleSmoothScroll(e, link.href, link.label === "Classes & Camps")
-                                if (e.defaultPrevented) handleMobileLinkClick()
+                                handleMobileLinkClick()
                               }}
                               className="flex-1 px-4 py-4 text-white font-medium tracking-wide transition-all duration-200 hover:bg-white/10 hover:text-blue-400 active:scale-95"
                             >
@@ -325,8 +323,8 @@ export default function Navbar() {
                                     key={`${link.label}-${item.label}`}
                                     href={itemHref}
                                     onClick={(e) => {
-                                      handleSmoothScroll(e, itemHref) // exact match for dropdown items
-                                      if (e.defaultPrevented) handleMobileLinkClick()
+                                      handleSmoothScroll(e, itemHref)
+                                      handleMobileLinkClick()
                                     }}
                                     className="block px-4 py-3 text-gray-300 hover:text-blue-400 hover:bg-white/5 rounded-lg transition-all duration-200 active:scale-95"
                                     style={{
@@ -348,7 +346,7 @@ export default function Navbar() {
                           href={link.href}
                           onClick={(e) => {
                             handleSmoothScroll(e, link.href)
-                            if (e.defaultPrevented) handleMobileLinkClick()
+                            handleMobileLinkClick()
                           }}
                           className="block px-4 py-4 text-white font-medium tracking-wide rounded-xl transition-all duration-200 hover:bg-white/10 hover:text-blue-400 hover:translate-x-2 active:scale-95 group"
                           style={{

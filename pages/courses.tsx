@@ -450,13 +450,13 @@ export default function CoursesPage() {
   const searchParams = useSearchParams()
   const router = useRouter()
 
-  // Derive active tab directly from URL – no state, no effect
+  // active tab directly from URL
   const activeTab = useMemo(() => {
     const tab = searchParams.get("tab")
-    return tab && ["jan-april", "summer", "fall", "holiday"].includes(tab) ? tab : "summer"
+    return tab && ["winter-courses", "summer-courses", "fall-courses", "holiday-courses"].includes(tab) ? tab : "summer-courses"
   }, [searchParams])
 
-  // Update URL when user selects a tab – only side effect is router.replace
+  // Update URL when user selects a tab
   const handleTabChange = useCallback(
     (value: string) => {
       router.replace(`?tab=${value}`, { scroll: false })
@@ -522,23 +522,23 @@ export default function CoursesPage() {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <TabsList className="grid w-full grid-cols-4 mb-4">
-              <TabsTrigger value="summer" className="text-xs">
+              <TabsTrigger value="summer-courses" className="text-xs">
                 Summer
               </TabsTrigger>
-              <TabsTrigger value="fall" className="text-xs">
+              <TabsTrigger value="fall-courses" className="text-xs">
                 Fall (Sept - Dec)
               </TabsTrigger>
-              <TabsTrigger value="jan-april" className="text-xs" >
+              <TabsTrigger value="winter-courses" className="text-xs" >
                 Winter (Jan - Mar)
               </TabsTrigger>
-              <TabsTrigger value="holiday" className="text-xs">
+              <TabsTrigger value="holiday-courses" className="text-xs">
                 Holiday
               </TabsTrigger>
 
             </TabsList>
           </motion.div>
 
-          <TabsContent value="jan-april">
+          <TabsContent value="winter-courses">
             <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
               <motion.div variants={itemVariants}>
                 <h2 className="text-lg font-bold mb-2">{janAprilConfig.title}</h2>
@@ -546,7 +546,7 @@ export default function CoursesPage() {
               </motion.div>
 
               <ClassDatesCard config={janAprilConfig.classDates} />
-              {/* <ScheduleImage category="jan-april" /> */}
+              {/* <ScheduleImage category="winter" /> */}
               <FilterTags courses={janAprilCourses} selectedTags={janAprilTags} onTagChange={setJanAprilTags} />
 
               <motion.div
@@ -560,7 +560,7 @@ export default function CoursesPage() {
             </motion.div>
           </TabsContent>
 
-          <TabsContent value="summer">
+          <TabsContent value="summer-courses">
             <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
               <motion.div variants={itemVariants}>
                 <h2 className="text-lg font-bold mb-2">{summerConfig.title}</h2>
@@ -580,7 +580,7 @@ export default function CoursesPage() {
             </motion.div>
           </TabsContent>
 
-          <TabsContent value="fall">
+          <TabsContent value="fall-courses">
             <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
               <motion.div variants={itemVariants}>
                 <h2 className="text-lg font-bold mb-2">{fallConfig.title}</h2>
@@ -602,7 +602,7 @@ export default function CoursesPage() {
             </motion.div>
           </TabsContent>
 
-          <TabsContent value="holiday">
+          <TabsContent value="holiday-courses">
             <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
               <motion.div variants={itemVariants}>
                 <h2 className="text-lg font-bold mb-2">{holidayConfig.title}</h2>

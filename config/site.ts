@@ -106,13 +106,13 @@ export const navItemsData = [
       {
         label: "Summer Camps",
         href: "/courses",
-        tabId: "summer",
+        tabId: "summer-courses",
         description: "July - August programs",
       },
       {
         label: "Fall Courses",
         href: "/courses",
-        tabId: "fall",
+        tabId: "fall-courses",
         description: "September - December programs",
       },
     ],

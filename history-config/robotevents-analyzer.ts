@@ -74,7 +74,7 @@ export class RobotEventsAnalyzer {
 
     // Create promises for remaining pages
     const pagePromises: Promise<ApiResponse<T>>[] = []
-    const maxConcurrent = 5 // Limit concurrent requests to avoid rate limiting
+    const maxConcurrent = 2 // Limit concurrent requests to avoid rate limiting
 
     for (let page = 2; page <= totalPages; page++) {
       pagePromises.push(
@@ -95,7 +95,7 @@ export class RobotEventsAnalyzer {
 
         // Small delay between batches to be respectful to the API
         if (page < totalPages) {
-          await new Promise((resolve) => setTimeout(resolve, 100))
+          await new Promise((resolve) => setTimeout(resolve, 250))
         }
       }
     }
