@@ -418,10 +418,87 @@ export default function Waiver() {
               <div className="prose prose-gray max-w-none">
                 <div>
                   <p className="text-gray-700 leading-relaxed">
-                    IN-PERSON ATTENDANCE LIABILITY WAIVER AND RELEASE OF CLAIMS
+                    PARTICIPATION LIABILITY WAIVER AND RELEASE OF CLAIMS
+                  </p>
+                  <p className="text-gray-700 leading-relaxed">
+                    While participating in meetings, activities, or events, ("events"), held, sanctioned, or sponsored by Coast 2 Coast Robotics, ("C2C Robotics") "social distancing" is highly encouraged and face coverings are recommended to be worn at all times to reduce the risks of exposure to COVID19. Because COVID-19 is extremely contagious and is spread mainly from person-to-person contact, C2C Robotics has put in place preventative measures to reduce the spread of COVID-19. However, C2C Robotics cannot guarantee that its participants, partners, or others in attendance will not become infected with COVID-19. In light of the ongoing spread of COVID-19, individuals who fall within any of the categories below should not engage in C2C Robotics events and/or other in-person activities. By attending a C2C Robotics event, you certify that you do not fall into any of the following categories:
+                      1. Individuals who currently or within the past five (5) days have experienced any symptoms associated with COVID-19, which include fever, cough, and shortness of breath among others;
+                      2. Individuals who have traveled at any point in the past five (5) days either internationally or to a community in the U.S. that has experienced or is experiencing sustained community spread of COVID-19; or
+                      3. Individuals who believe that they may have been exposed to a confirmed or suspected case of COVID-19 or have been diagnosed with COVID-19 and are not yet cleared as non-contagious by state or local public health authorities or the health care team responsible for their treatment.
                   </p>
                 </div>
               </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900">DUTY TO SELF-MONITOR.</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  Participants agree to self-monitor for signs and symptoms of COVID-19 (symptoms typically include fever, cough, and shortness of breath) and, contact C2C Robotics regarding symptoms of COVID-19 as soon as possible.
+                </p>
+              </div> 
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900">LIABILITY WAIVER AND RELEASE OF CLAIMS.</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  I acknowledge that I willingly engage in C2C Robotics events and/or other activities (the “Activity”).
+                </p>
+              </div> 
+
+               <div className="space-y-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900">RELEASE AND WAIVER.</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  I HEREBY RELEASE, WAIVE AND FOREVER DISCHARGE ANY AND ALL LIABILITY, CLAIMS, AND DEMANDS OF WHATEVER KIND OR NATURE AGAINST COAST 2 COAST ROBOTICS AND ITS AFFILIATED PARTNERS AND SPONSORS, INCLUDING IN EACH CASE, WITHOUT LIMITATION, THEIR DIRECTORS, OFFICERS, EMPLOYEES, VOLUNTEERS, AND AGENTS (THE “RELEASED PARTIES”), EITHER IN LAW OR IN EQUITY, TO THE FULLEST EXTENT PERMISSIBLE BY LAW, INCLUDING BUT NOT LIMITED TO DAMAGES OR LOSSES CAUSED BY THE NEGLIGENCE, FAULT OR CONDUCT OF ANY KIND ON THE PART OF THE RELEASED PARTIES, INCLUDING BUT NOT LIMITED TO DEATH, BODILY INJURY, ILLNESS, ECONOMIC LOSS OR OUT OF POCKET EXPENSES, OR LOSS OR DAMAGE TO PROPERTY, WHICH I, MY HEIRS, ASSIGNEES, NEXT OF KIN AND/OR LEGALLY APPOINTED OR DESIGNATED REPRESENTATIVES, MAY HAVE OR WHICH MAY HEREINAFTER ACCRUE ON MY BEHALF, WHICH ARISE OR MAY HEREAFTER ARISE FROM MY PARTICIPATION WITH THE ACTIVITY.
+                </p>
+              </div> 
+
+               <div className="space-y-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900">ASSUMPTION OF THE RISK.</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  I acknowledge and understand the following:
+                  1. Participation includes possible exposure to and illness from infectious diseases including but not limited to COVID-19. While particular rules and personal discipline may reduce this risk, the risk of serious illness and death does exist;
+                  2. I knowingly and freely assume all such risks related to illness and infectious diseases, such as COVID19, even if arising from the negligence or fault of the Released Parties; and
+                  3. I hereby knowingly assume the risk of injury, harm and loss associated with the Activity, including any injury, harm and loss caused by the negligence, fault or conduct of any kind on the part of the Released Parties.
+                </p>
+              </div> 
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900">ACKNOWLEDGEMENT OF FORFEITURES</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  I acknowledge and understand that the Released Parties reserves the right to discontinue my future participation in the event that I fail to abide by safety guidelines pertaining to Covid-19 and like illnesses and diseases. I further acknowledge that any damage caused to the participants and/or the property or site owner of the Activity forfeits my rights for further participation.
+                </p>
+              </div> 
+
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900">MEDICAL ACKNOWLEDGMENT AND RELEASE.</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  I acknowledge the health risks associated with the Activity, including but not limited to transient dizziness, lightheaded, fainting, nausea, muscle cramping, musculoskeletal injury, joint pains, sprains and strains, heart attack, stroke, or sudden death. I agree that if I experience any of these or any other symptoms during the Activity, I will discontinue my participation immediately and seek appropriate medical attention.
+                </p>
+                <p className="text-gray-700 leading-relaxed">
+                  I DO HEREBY RELEASE AND FOREVER DISCHARGE THE RELEASED PARTIES FROM ANY CLAIM WHATSOEVER WHICH ARISES OR MAY HEREAFTER ARISE ON ACCOUNT OF ANY FIRST AID, TREATMENT, OR SERVICE RENDERED IN CONNECTION WITH MY PARTICIPATION IN THE ACTIVITY.
+                </p>
+              </div> 
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900">ASSUMPTION OF THE RISK.</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed">
+                  As a participant, You recognize that your participation, involvement and/or attendance at any C2C Robotics event or activity (“Activity”) is voluntary and may result in personal injury (including death) and/or property damage. By attending, observing or participating in the Activity, You acknowledge and assume all risks and dangers associated with your participation and/or attendance at the Activity, and You agree that: (a) Coast 2 Coast Robotics, LLC. (b) the property or site owner of the Activity, and (c) all past, present and future affiliates, successors, assigns, employees, volunteers, vendors, partners, directors, and officers, of such entities (subsections (a) through (c), collectively, the "Released Parties"), will not be responsible for any personal injury (including death), property damage, or other loss suffered as a result of your participation in, attendance at, and/or observation of the Activity, regardless if any such injuries or losses are caused by the negligence of any of the Released Parties (collectively, the "Released Claims"). BY ATTENDING AND/OR PARTICIPATING IN THE ACTIVITY, YOU ARE DEEMED TO HAVE GIVEN A FULL RELEASE OF LIABILITY TO THE RELEASED PARTIES TO THE FULLEST EXTENT PERMITTED BY LAW.
+                </p>
+              </div> 
+
             </section>
 
             {/* Confidentiality Agreement */}
