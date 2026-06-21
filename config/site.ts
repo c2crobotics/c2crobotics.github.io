@@ -210,7 +210,7 @@ const siteURLsData = {
 
 export const siteConfig: SiteConfig = {
   name: "C2C",
-  description: "The official website for the C2C Robotics.",
+  description: "The official website for the C2C Robotics - a leading STEM and robotics education center in New York City for Grades K-12. Offering after-school, weekend, and holiday programs, C2C offers hands-on experiential education and leadership training for aspiring engineers. Our VEX V5 teams (62880 and 88288) and VEX IQ teams (65950 and 8822) are the top in the world, with more than 100+ regional awards, 20+ State Championship awards, and 6 World Championship awards.",
   navItems: navItemsData,
   links: linksData,
   sponsors: sponsorsData,
