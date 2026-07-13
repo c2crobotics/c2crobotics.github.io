@@ -199,7 +199,7 @@ function CompactCourseCard({ course, index }: { course: any; index: number }) {
             </div>
             <div className="flex items-center gap-1 col-span-2">
               <Calendar className="h-3 w-3 text-muted-foreground shrink-0" />
-              <span className="truncate">{course.dates}</span>
+              <span className="truncate">{course.courseCode}</span>
             </div>
             <div className="flex items-start gap-1 col-span-2">
               <Clock className="h-3 w-3 text-muted-foreground shrink-0 mt-0.5" />
