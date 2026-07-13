@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Calendar, Clock, Users, Filter } from 'lucide-react'
+import { Calendar, Clock, Users, Filter, DollarSign, DollarSignIcon, MapIcon } from 'lucide-react'
 import { motion, AnimatePresence, type Variants } from "framer-motion"
 import {
   siteConfig,
@@ -197,13 +197,21 @@ function CompactCourseCard({ course, index }: { course: any; index: number }) {
               <Users className="h-3 w-3 text-muted-foreground shrink-0" />
               <span className="truncate">{course.gradeLevel}</span>
             </div>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 col-span-2">
               <Calendar className="h-3 w-3 text-muted-foreground shrink-0" />
               <span className="truncate">{course.dates}</span>
             </div>
             <div className="flex items-start gap-1 col-span-2">
               <Clock className="h-3 w-3 text-muted-foreground shrink-0 mt-0.5" />
               <span className="text-xs leading-tight">{course.time}</span>
+            </div>
+             <div className="flex items-start gap-1 col-span-2">
+              <MapIcon className="h-3 w-3 text-muted-foreground shrink-0 mt-0.5" />
+              <span className="text-xs leading-tight">{course.c2cLocation}</span>
+            </div>
+            <div className="flex items-start gap-1 col-span-2">
+              <DollarSign className="h-3 w-3 text-muted-foreground shrink-0 mt-0.5" />
+              <span className="text-xs leading-tight">{course.cost}</span>
             </div>
           </div>
 
@@ -334,11 +342,83 @@ function CompactCourseCard({ course, index }: { course: any; index: number }) {
   )
 }
 
+
+function FilterLocations({
+  courses,
+  selectedTags,
+  onTagChange,
+  }: {
+  courses: any[]
+  selectedTags: string[]
+  onTagChange: (tags: string[]) => void
+}) {
+  const allLocationTags = Array.from(new Set(courses.flatMap((course) => course.c2cLocation)))
+
+  const toggleTag = (tag: string) => {
+    if (selectedTags.includes(tag)) {
+      onTagChange(selectedTags.filter((t) => t !== tag))
+    } else {
+      onTagChange([...selectedTags, tag])
+    }
+  }
+  return (
+    <motion.div variants={itemVariants}>
+      <Card className="mb-4">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Filter className="h-4 w-4" />
+            Filter by Location
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="pt-0">
+          <div className="flex flex-wrap gap-2">
+            {allLocationTags.map((tag, index) => (
+              <motion.div
+                key={tag}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  variant={selectedTags.includes(tag) ? "default" : "outline"}
+                  size="sm"
+                  className="text-xs"
+                  onClick={() => toggleTag(tag)}
+                >
+                  {tag.replace("-", " ")}
+                </Button>
+              </motion.div>
+            ))}
+          </div>
+          <AnimatePresence>
+            {selectedTags.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Button variant="ghost" size="sm" className="mt-2 text-xs" onClick={() => onTagChange([])}>
+                  Clear All Filters
+                </Button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </CardContent>
+      </Card>
+    </motion.div>
+  )
+}
+
+
+
 function FilterTags({
   courses,
   selectedTags,
   onTagChange,
-}: {
+  }: {
   courses: any[]
   selectedTags: string[]
   onTagChange: (tags: string[]) => void
@@ -352,7 +432,6 @@ function FilterTags({
       onTagChange([...selectedTags, tag])
     }
   }
-
   return (
     <motion.div variants={itemVariants}>
       <Card className="mb-4">
@@ -403,6 +482,11 @@ function FilterTags({
     </motion.div>
   )
 }
+
+
+
+
+
 
 function ClassDatesCard({ config }: { config: any }) {
   return (
@@ -589,6 +673,7 @@ export default function CoursesPage() {
 
               <ClassDatesCard config={fallConfig.classDates} />
               {/* <ScheduleImage category="fall" /> */}
+              {/*<FilterLocations courses={fallCourses} selectedTags={fallTags} onTagChange={setFallTags} />*/}
               <FilterTags courses={fallCourses} selectedTags={fallTags} onTagChange={setFallTags} />
 
               <motion.div
